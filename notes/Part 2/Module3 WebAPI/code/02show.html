@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <input type="button" value="点击隐藏" id="btn">
+    <script>
+        var box = document.getElementById("box");
+        var btn = document.getElementById("btn");
+        // 在事件函数内部有一个this指向事件源。
+        btn.onclick = function () {
+            if (this.value == "点击隐藏") {
+                this.value = "点击显示";
+                box.className = "hide";
+            } else {
+                this.value = "点击隐藏";
+                box.className = "show";
+            }
+        };
+
+    </script>
+</body>
+
+</html>

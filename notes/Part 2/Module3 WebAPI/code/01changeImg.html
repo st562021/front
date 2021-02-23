@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="切换">
+    <img src="img/c2.jpg" alt="山水" id="img">
+    <script>
+        var btn = document.getElementById("btn");
+        var img = document.getElementById("img");
+        // 1表示此时在c2，需要切换到c3，
+        var num = 1;
+        btn.onclick = function(){
+            // 使用中间变量来判断如何切换图片
+            if(num == 1){
+                img.src = "img/c3.jpg";
+                num = 2;
+            }else {
+                img.src = "img/c2.jpg";
+                num = 1;
+            }
+        };
+    </script>
+</body>
+</html>

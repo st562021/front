@@ -1,0 +1,538 @@
+@import "common";
+/* 给body样式初始化 */
+body {
+    min-width: 320px;;
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: -apple-system,Helvetica,sans-serif;
+}
+a {
+    text-decoration: none;
+}
+ul,ol {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+/* 清除高亮并设置为透明 */
+* {
+    -webkit-tap-highlight-color:transparent;
+}
+/* 添加此属性来给iOS的按钮和输入框自定义样式 */
+input {
+    -webkit-appearance: none;
+}
+/* 禁用长按页面时弹出菜单 */
+img,a {
+    -webkit-touch-callout: none;
+}
+@baseFont: 50px;
+// APP下载区域
+.download {
+    width: 100%;
+    height: 50rem / @baseFont;
+    display: flex;
+    line-height: 50rem / @baseFont;
+    .left {
+        flex: 2;
+        background-color: #232326;
+        color: #fff;
+        .close {
+            float: left;
+            width: 16rem / @baseFont;
+            height: 16rem / @baseFont;
+            margin-left: 16rem / @baseFont;
+            margin-top: 17rem / @baseFont;
+        }
+        .logo {
+            float: left;
+            width: 35rem / @baseFont;
+            height: 35rem / @baseFont;
+            margin: 7.5rem / @baseFont 32rem / @baseFont 0 16rem / @baseFont;
+        }
+        span {
+            display: block;
+            float: left;
+            width: 3rem;
+            &.title2 {
+                width: 3.5rem;
+                font-size: 12rem / @baseFont;
+                color: #999999;
+            }
+        }
+
+    }
+    .right {
+        flex: 1;
+        background-color: #CD2525;
+        color: #fff;
+        text-align: center;
+        font-size: 14rem / @baseFont;
+    }
+    
+}
+// 头部搜索区域
+.header {
+    // 对象在常态时遵循常规流。它就像是relative和fixed的合体，当在屏幕中时按常规流排版，当卷动到屏幕外时则表现如fixed
+    position: sticky;
+    top: 0;
+    left: 0;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 44rem / @baseFont;
+    background-color: #B71113;
+    z-index: 20;
+    .s-btn {
+        display: block;
+        width: 40rem / @baseFont;
+        height: 44rem / @baseFont;
+        margin-right: 10rem / @baseFont;
+        img {
+            display: block;
+            width: 20rem / @baseFont;
+            height: 18rem / @baseFont;
+            padding: 13rem / @baseFont 0 0 15rem / @baseFont;
+        }
+    }
+    .search {
+        position: relative;
+        display: block;
+        flex: 1;
+        height: 30rem / @baseFont;
+        margin-right:  32rem / @baseFont;
+        background-color: #fff;
+        border-radius: 15rem / @baseFont;
+        overflow: hidden;
+        .i1 {
+            float: left;
+            display: block;
+            width: 20rem / @baseFont; 
+            height: 15rem / @baseFont;
+            margin: 8rem / @baseFont 8rem / @baseFont 0 15rem / @baseFont;  
+            background: url(../images/logo2.png) no-repeat 0 0;
+            background-size: 20rem / @baseFont auto;
+        }
+        .i1::after {
+            position: absolute;
+            top: 8rem / @baseFont;
+            left: 40rem / @baseFont;
+            content: '';
+            display: block;
+            float: left;
+            width: 2rem / @baseFont;
+            height: 15rem / @baseFont;
+            background-color: #E8E8E8;
+        }
+        .i2 {
+            display: block;
+            float: left;
+            width: 18rem / @baseFont;
+            height: 15rem / @baseFont;
+            margin: 8rem / @baseFont 0 0 10rem / @baseFont;
+            background: url(../images/jd-sprites.png) no-repeat -82rem / @baseFont 0;
+            background-size: 200rem / @baseFont;
+        }
+        input {
+            position: absolute;
+            line-height: 30rem / @baseFont;
+            left: 78rem / @baseFont;
+            padding: 0;
+            border: 0;
+        }
+    }
+    .login {
+        display: block;
+        width: 65rem / @baseFont;
+        height: 44rem / @baseFont;
+        line-height: 44rem / @baseFont;
+        text-align: left;
+        span {
+            // margin: 8rem / @baseFont 0.2rem 8rem / @baseFont 0;
+            font-size: 14rem / @baseFont;
+            color: #fff;
+        }
+    }
+}
+main {
+    width: 100%;
+    margin-top: 44rem / @baseFont;
+    background-color: #F5F5F5;
+}
+// banner区域
+.banner {
+    position: relative;
+    width: 100%;
+    height: 225rem / @baseFont;
+    overflow: hidden;
+    .bg {
+        position: absolute;
+        left: -25%;
+        width: 150%;
+        height: 100rem / @baseFont;
+        background-image: linear-gradient(to bottom,#B71113,#E74633);
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    .banner-list {
+        li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 206rem / @baseFont;
+            float: left;
+            box-sizing: border-box;
+            padding: 0 18rem / @baseFont;
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border-radius: 15rem / @baseFont;
+                overflow: hidden;
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+// banner2区域
+.banner2 {
+    width: 100%;
+    display: flex;
+    a {
+        flex: 1;
+        float: left;
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+}
+.nav {
+    width: 100%;
+    li {
+
+        width: 20%;
+        float: left;
+        a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            img {
+                display: block;
+                margin-top: .5rem;
+                width: 57.6rem / @baseFont;
+            }
+            span {
+                padding-top: .3rem;
+                font-size: 18rem / @baseFont;
+                color: #666;
+            }
+            
+        }
+    }
+}
+.footer-container {
+    box-sizing: border-box;
+    width: 96.21%;    
+    margin: 0 14.4rem / @baseFont 14.4rem / @baseFont 14.4rem / @baseFont;
+    background-color: #fff;
+    overflow: hidden;
+    a {
+        display: block;
+        float: left;
+        width: 25%;
+        box-sizing: border-box;
+        padding: 9.36rem / @baseFont 0 7.2rem / @baseFont 14.4rem / @baseFont;
+        h4 {
+            color: #333;
+            font-size: 22rem / @baseFont;
+        }
+        p {
+            font-size: 16rem / @baseFont;
+            color: #333;
+        }
+        div {
+            width: 86.4rem / @baseFont;
+            height: 86.4rem / @baseFont;
+            margin: .275rem .2rem 0;
+            img {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                text-align: center;
+            }
+        }
+    }
+
+}
+// 秒杀区域
+.seckill {
+    margin: 14.4rem / @baseFont;
+    padding-left: 12rem / @baseFont;
+    background-color: #fff;
+    border-radius: 12rem / @baseFont;
+    overflow: hidden;
+    .title {
+        width: 100%;
+        height: 49rem / @baseFont;
+        background: url(../images/title-wrap.png) no-repeat center center;
+        background-size: contain;
+        .name {
+            display: block;
+            float: left;
+            font-size: 20rem / @baseFont;
+            padding: 15rem / @baseFont 10rem / @baseFont 0 0; 
+        }
+        .time-wrapper {
+            float: left;
+            position: relative;
+            padding-top: 15rem / @baseFont;
+            height: 34rem / @baseFont;
+            color: #ff2727;
+            vertical-align: middle;
+            .hour {
+                float: left;
+                font-size: 20rem / @baseFont;
+                margin-right: 35rem / @baseFont;
+            }
+            .hour::after {
+                display: block;
+                content: '';
+                position: absolute;
+                top: 13rem / @baseFont;
+                left: 20rem / @baseFont;
+                width: 29rem / @baseFont;
+                height: 25rem / @baseFont;
+                background: url(../images/time-wrapper.png) no-repeat 0 0;
+                background-size: contain;
+            }
+            span {
+                display: block;
+                float: left;
+                margin-right: 3rem / @baseFont;
+                &.time {
+                    background-color: #ff2727;
+                    border-radius: 3rem / @baseFont;
+                    color: #fff;
+                }
+            }
+
+        }
+        .more {
+            display: block;
+            position: relative;
+            height:49rem / @baseFont;
+            padding-top: 15rem / @baseFont;
+            padding-right: 30rem / @baseFont;
+            float: right;
+            text-align: center;
+            span {
+                font-size: 18rem / @baseFont;
+                color:#ff2727;
+            }
+            span::after {
+                display: block;
+                content: "";
+                position: absolute;
+                top: 18rem / @baseFont;
+                right: 9rem / @baseFont;
+                width: 16rem / @baseFont;
+                height: 16rem / @baseFont;
+                background: url(../images/more.png) no-repeat 0 0;
+                background-size: contain;
+            }            
+        }
+
+    }
+    ul {
+        display: flex;
+        width: 100%;
+        li {
+            flex: 1 1 100px;
+            width: 117rem / @baseFont;
+            a {
+                width: 100%;
+                display: flex;
+                box-sizing: border-box;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                div {
+                    padding: 3rem / @baseFont;
+                    width: 100%;
+                    img {
+                        width: 100%;
+                    }
+                }
+                
+                span {
+                    padding: 3rem / @baseFont 0;
+                    font-size: 16rem / @baseFont;
+                    &.old {
+                        position: relative;
+                        color: #999999;
+                    }
+                    &.new {
+                        color: #ff2727;
+                        font-weight: 600;
+                    }
+                    .sym {
+                        font-size: 12rem / @baseFont;
+                    }
+                    hr {
+                        position: absolute;
+                        top: 15rem / @baseFont;
+                        height: 1rem / @baseFont;
+                        width: 30rem / @baseFont;
+                        border: 0;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #999;
+                    }
+                }
+            
+                
+            }
+
+        }
+    }
+}
+// 图片展示区域开始
+.footer-graphic {
+    margin: 0 14.4rem / @baseFont 14.4rem / @baseFont 14.4rem / @baseFont;
+    ul {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        overflow: hidden;
+        li {
+            margin-top: 15rem / @baseFont;
+            margin-right: 45rem / @baseFont;
+            &:nth-child(4) {
+                margin-right: 0;
+                text-align: right;
+            }
+            a {
+                display: flex;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+                img {
+                    display: block;
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+// 推荐区域
+.recommend {
+    display: flex;
+    flex-direction: column;
+    margin: 0 14.4rem / @baseFont 14.4rem / @baseFont 14.4rem / @baseFont;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 15rem / @baseFont;
+    .top {
+        flex: 1;
+        display: flex;
+        width: 100%;
+        padding: 10rem / @baseFont 0 0 12rem / @baseFont;
+        .left {
+            flex: 1;
+            a {
+                display: block;
+                width: 100% ;
+                h4 {
+                    font-size: 24rem / @baseFont;
+                    font-weight: 700;
+                    color: #000;
+                }
+                p {
+                    margin-bottom: 5rem / @baseFont;
+                    font-size: 18rem / @baseFont;
+                    color: #74787E;
+                }
+                img {
+                    display: inline-block;
+                    width: 100rem / @baseFont;
+                    height: 100rem / @baseFont;
+                    margin-right: 30rem / @baseFont;
+                }
+            }
+            .bottom {
+                display: flex;
+                a {
+                    flex: 1;
+                }
+            }
+        }
+
+    }
+
+}
+.guess {
+    margin: 0 14.4rem / @baseFont 14.4rem / @baseFont 14.4rem / @baseFont;
+    display: flex;
+    justify-content:space-between;
+    .left .right{
+        li {
+            width: 100%;
+            border-radius: 10rem / @baseFont;
+            background-color: #fff;
+            a {
+                display: block;
+                width: 100%;
+
+            }
+        }
+    }
+}
+.backToTop {
+    position: fixed;
+    bottom: 120px;
+    right: 9px;
+    display: block;
+    width: 38px;
+    height: 38px;
+    background: url(../images/backToTop.png) no-repeat center center;
+    background-size: 38px auto;
+}
+.nav-bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 hsl(0deg 6% 58% / 60%);
+}
+.nav-bottom a {
+    display: block;
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+.nav-bottom a img {
+    width: 100%;
+    height: 100%;
+}
