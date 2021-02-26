@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <p>这是一个p标签</p>
+        <span>这是一个span盒子</span>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        // 获取子节点
+        console.log(box.childNodes);// 5个  元素间的换行也会记为一个text
+        console.log(box.children);
+        console.log(box.firstChild);
+        console.log(box.firstElementChild);
+        // 获取父级
+        console.log(box.parentNode);
+        console.log(box.parentElement);
+    </script>
+</body>
+</html>

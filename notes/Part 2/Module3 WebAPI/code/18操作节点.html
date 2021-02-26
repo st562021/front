@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+    <div class="box" id="box">
+        <p>这是一段内容</p>
+        <p>这是一段内容</p>
+        <p id="p3">这是一段内容</p>
+        <p>这是一段内容</p>
+    </div>
+    <script>
+        var div = document.createElement("div");
+        var id = document.createAttribute("id");
+        var txt = document.createTextNode("hello");
+        var box = my$("box");
+        box.appendChild(div);
+        // 自己创建的元素节点本身也是一个对象，可以添加属性和方法，将来加载到DOM树时，这些操作依旧保留
+        // 在元素内部添加文本节点
+        div.appendChild(txt);
+        // DOM中原有的节点也可以传给appendChild的参数
+        // 类比剪切操作。1.将节点从原始位置删除，2.添加到新指定位置
+        // 原因：内存中这个原有节点只有一个，渲染时只能有一个位置。
+        
+    </script>
+</body>
+</html>

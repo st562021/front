@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>美女如云</h2>
+    <div id="gallary">
+        <a href="img/1.jpg" title="美女A"><img src="img/1-small.jpg" alt=""></a>
+        <a href="img/2.jpg" title="美女B"><img src="img/2-small.jpg" alt=""></a>
+        <a href="img/3.jpg" title="美女C"><img src="img/3-small.jpg" alt=""></a>
+        <a href="img/4.jpg" title="美女D"><img src="img/4-small.jpg" alt=""></a>
+    </div>
+    <div style="clear:both"></div>
+    <img src="img/placeholder.png" alt="" width="450px" id="img">
+    <p id="p">请选择一张图片</p>
+    <script>
+        // 1.获取元素
+        var gal = document.getElementById("gallary");
+        var links = gal.getElementsByTagName("a");
+        var img = document.getElementById("img");
+        var p = document.getElementById("p");
+        // 2.遍历数组，添加点击事件
+        for(var i = 0;i < links.length;i++){
+            links[i].onclick = function(){
+                // 更改img内部的src属性值
+                img.src = this.href;
+                // 修改p标签
+                p.innerText = this.title;
+                // 取消a标签默认跳转
+                return false;
+            };
+        }
+
+
+    </script>
+</body>
+
+</html>

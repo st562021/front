@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高亮显示</title>
+    <script type="text/javascript" src="common.js"></script>
+    <style>
+        input {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 排他思想：遍历使所有元素显示默认效果，this使特定元素高亮显示 -->
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <button>提交</button>
+    <script>
+        var inputs = document.getElementsByTagName("input");
+        for(var i = 0; i < inputs.length; i++) {
+            // 添加获取焦点事件
+            inputs[i].onfocus = function () {
+                for(var j = 0;j < inputs.length; j++) {
+                    inputs[j].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = 'yellow';
+            }
+
+        }
+    </script>
+</body>
+</html>

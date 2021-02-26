@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+    <style>
+        thead {
+            font-weight: bold;
+            background-color: lightgray;
+        }
+        td {
+            width: 50px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>科目</td>
+                <td>成绩</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody id="tb"></tbody>
+    </table>
+    <script>
+        var tb = my$('tb');
+        var datas = [['ls', '数学', '92'], ['ww', '数学', '92'], ['lb', '数学', '92'], ['ldv', '数学', '92'], ['wdn', '数学', '92']];
+        for (var i = 0; i < datas.length; i++) {
+            var info = datas[i];
+            console.log(info);
+            var tr = document.createElement("tr");
+            tb.appendChild(tr);
+            for (var j = 0; j < info.length; j++) {
+                var td = document.createElement("td");
+                tr.appendChild(td);
+                td.innerText = info[j];
+            }
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            var a = document.createElement("a");
+            td.appendChild(a);
+            a.innerText = '操作';
+            a.href = 'javascript:void(0)';
+            a.onclick = function () {
+                tb.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

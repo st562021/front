@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入用户名" id="name"><br>
+    <input type="text" placeholder="请输入密码" id="pwd"><br>
+    <input type="button" id="btn" value="提交">
+    <script>
+        var txt = document.getElementById("name");
+        var pwd = document.getElementById("pwd");
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            // 用户名位数是否在3-6，不满足时高亮显示
+            var nameTxt = txt.value.length;
+            var pwdTxt = pwd.value.length;
+            if(nameTxt < 3 || nameTxt > 6) {
+                txt.className = "bg";
+                return;
+            }else {
+                txt.className = "";
+            }
+            if(pwdTxt < 6 || pwdTxt > 9) {
+                pwd.className = "bg";
+                return;
+            }else {
+                pwd.className = "";
+            }
+        };
+    </script>
+</body>
+</html>

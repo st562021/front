@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="随机点餐器" id="btn"><br>
+    <select name="food" id="food">
+        <option value="xia">虾</option>
+        <option value="fish">鱼</option>
+        <option value="vegetable">菜</option>
+        <option value="rice">米</option>
+        <option value="noddles">面</option>
+    </select>
+    <script>
+        var btn = document.getElementById("btn");
+        var food = document.getElementById("food");
+        var opts = food.getElementsByTagName("option");
+        btn.onclick = function () {
+            // Math.random() 的值为[0,1)]
+            var m = Math.floor(Math.random()*(opts.length));
+            // 属性值为布尔值
+            opts[m].selected = true;
+        };
+    </script>
+</body>
+</html>

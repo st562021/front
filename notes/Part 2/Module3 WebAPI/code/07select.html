@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选反选</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <input type="checkbox" id="selectAll">
+                </td>
+                <td>商品</td>
+                <td>价钱</td>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>iphone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>ipad</td>
+                <td>6000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>iphone7</td>
+                <td>6000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>AppleWatch</td>
+                <td>3000</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" id="btn" value="反选">
+    <script>
+        var selectAll = document.getElementById("selectAll");
+        var tb = document.getElementById("tb");
+        var inputs = tb.getElementsByTagName("input");
+        var btn = document.getElementById("btn");
+        console.log(inputs);
+        // 全选
+        selectAll.onclick = function () {
+            if (this.checked) {
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].checked = true;
+                }
+            } else {
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].checked = false;
+                }
+            }
+        };
+        // 反选
+        btn.onclick = function () {
+            for (var i = 0; i < inputs.length; i++) {
+                // 取反
+                inputs[i].checked = !inputs[i].checked;
+            }
+            // 控制全选效果
+            allChecked();
+        }
+        // 子选项控制全选
+        // 给每个input添加点击事件
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = function () {
+                allChecked();
+            }
+        }
+        // 封装函数all
+        function allChecked() {
+            var isAll = true;
+            for (var j = 0; j < inputs.length; j++) {
+                if (inputs[j].checked == false) {
+                    isAll = false;
+                    break;
+                }
+            }
+            selectAll.checked = isAll;
+        }
+    </script>
+</body>
+
+</html>

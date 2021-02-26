@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+    <style>
+        td {
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse;">
+        <tbody id="tb">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var tb = document.getElementById("tb");
+        var trs = tb.children;
+        for (var i = 0; i < trs.length; i++) {
+            // 设置隔行颜色 偶数为白，奇数为灰
+            if(i % 2 == 0) {
+                trs[i].style.backgroundColor = 'white';
+            } else {
+                trs[i].style.backgroundColor = 'lightgray';
+            }
+            // 取一个中间变量来存放改变之前的颜色
+            var bgc;
+            trs[i].onmouseover = function () {
+                bgc = this.style.backgroundColor;
+                this.style.backgroundColor = 'pink';
+            };
+            trs[i].onmouseout = function () {
+                this.style.backgroundColor = bgc;
+            }
+        }
+
+    </script>
+</body>
+</html>

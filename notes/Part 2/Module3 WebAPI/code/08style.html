@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+    <input type="button" value="点击" id="btn">
+    <div id="box" style="width: 100px;">这是一个盒子</div>
+    <script>
+        // 获取元素
+        var btn = my$('btn');
+        var box = my$('box');
+        // 得到一个行内样式组成的对象
+        console.log(box.style);
+        // 得到对象内的属性值
+        console.log(box.style.width); // 100px
+
+    </script>
+</body>
+</html>

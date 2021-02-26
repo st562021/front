@@ -24,7 +24,7 @@
 * 动态创建元素
 * 事件(什么时候做响应的操作)
 
-##### 获取元素
+##### 1.获取元素
 
 js中获取元素时，必须保证元素已经在浏览器中渲染成功。
 
@@ -100,7 +100,7 @@ document.querySelector()  document.querySelectorAll()
 var para = document.querySelector("#box1 .para")
 ```
 
-##### 对元素进行操作
+##### 2.对元素进行操作
 
 ###### 事件
 
@@ -163,3 +163,158 @@ JavaScript解析器会给有绑定事件的元素添加一个监听，解析器�
 对象的方法  --  指向对象本身
 
 事件函数  --  指向事件源。
+
+###### 获取标签内部内容的属性
+
+innerHTML：在获取标签内部内容时，如果包含标签，获取的内容会包含标签、空白换行等。
+
+innerText：在获取标签内部内容时，如果包含标签，获取的内容会过滤标签，去掉换行和缩进等空白。
+
+**更改标签内部内容**
+
+innerHTML：设置属性值，有标签前的字符串会按照HTML语法中的标签加载。在设置有内部子标签结构时使用。
+
+innerText：设置属性值，有标签前的字符串会按照普通的字符加载。在设置纯字符串时使用。
+
+###### 表单元素 的属性
+
+value  type  disabled  checked  selected  
+
+```html
+// 由于表单元素多使用input展示，input为单标签，无法像双标签一样在内部写内容，因此使用value设置其内容。
+// 后三个的属性值和属性名一致，打点设置时，使用布尔值，不设置时，默认为false
+```
+
+###### 自定义属性
+
+未封装，不能直接打点调用。
+
+getAttribute(name) 获取标签行内属性
+
+setAttribute(name,value) 设置标签行内属性
+
+removeAttribute(name)  移除标签行内属性
+
+* 上述三个方法用于获取任意的行内属性，包括自定义的属性
+* 传参不需要修改属性名(class-->className)
+
+###### style样式属性
+
+使用style属性方式设置的样式显示在标签行内。
+
+element.style属性的值，是所有行内样式组成的一个样式对象。如果
+
+如果使用的css属性名是复合属性的单一属性，需要更改为驼峰命名法。
+
+```html
+// backgroundColor
+```
+
+设置样式属性值时，有单位的要加上单位。
+
+###### className类名属性操作
+
+批量修改样式时，可以选择将样式提前写入一个类中，后续通过修改类名的方式来批量修改样式。但要注意，此时的权重足够层叠之前的样式。
+
+##### 3.DOM节点操作
+
+##### 节点属性
+
+* nodeType  属性值为数字，共12种，只读
+
+  1--元素节点 2--属性节点  3--文本节点
+
+* nodeName  标签名称，只读
+
+* nodeValue  设置或返回当前节点的值
+
+  元素节点的nodeValue始终是null
+
+###### 父子节点常用属性：
+
+childNodes：只读，获取一个节点所有**子节点**的**实时**集合。
+
+children：只读，返回一个节点所有的**子元素节点**集合，是一个动态更新的html元素集合。
+
+firstChild：只读，返回该节点的第一个子节点，没有则返回null
+
+lastChild：只读，返回该节点的最后一个子节点，没有则返回null
+
+parentNode：返回一个当前节点的父节点，如果没有(此节点为树的顶端或没有插入一棵树中)，则返回null
+
+parentElement：返回一个当前节点的父元素节点，没有则返回null
+
+###### 兄弟节点常用属性：
+
+nextSibling：只读，返回与该节点同级的下一个节点，如果没有，返回null
+
+previousSibling：只读，返回上一个
+
+nextElementSibling：只读，返回与该节点同级的下一个元素节点(兼容问题)
+
+previousElementSibling：只读，返回上一个元素节点(兼容问题)
+
+##### 创建新节点
+
+一般将创建的新节点存在变量中，方便使用。
+
+创建的新节点是存储在内存中的，并没有添加到DOM树上。
+
+```javascript
+        document.createElement("div"); // 创建元素节点
+        document.createAttribute("id"); // 创建属性节点
+        document.createTextNode("hello"); // 创建文本节点
+```
+
+##### 节点常用操作方法：
+
+1. parentNode.appendChild(child);
+
+   将节点添加到指定节点的子节点末尾
+
+```html
+<body>
+    <div class="box" id="box">
+        <p>这是一段内容</p>
+        <p>这是一段内容</p>
+        <p id="p3">这是一段内容</p>
+        <p>这是一段内容</p>
+    </div>
+    <script>
+        var div = document.createElement("div");
+        var id = document.createAttribute("id");
+        var txt = document.createTextNode("hello");
+        var box = my$("box");
+        box.appendChild(div);
+        // 自己创建的元素节点本身也是一个对象，可以添加属性和方法，将来加载到DOM树时，这些操作依旧保留
+        // 在元素内部添加文本节点
+        div.appendChild(txt);
+        // DOM中原有的节点也可以传给appendChild的参数
+        // 类比剪切操作。1.将节点从原始位置删除，2.添加到新指定位置
+        // 原因：内存中这个原有节点只有一个，渲染时只能有一个位置。
+    </script>
+</body>
+```
+
+2. parentNode.replaceChild(newChild,oldChild)
+
+   用指定节点替换当前节点的某个子节点，并返回被替换掉的节点。
+
+```html
+        box.replaceChild(div,p3);
+```
+
+3. parentNode.insertBefore(newNode,referenceNode):在参考节点之前插入一个拥有指定父节点的子节点，第二个参数必须设置，为null时将节点插到子节点末尾。
+
+   ```html
+   box.insertBefore(div,p3);
+   ```
+
+4. parentNode.removeChild():移除子节点，这个子节点必须存在于当前节点中。
+
+5. Node.cloneNode():克隆节点。参数为布尔值。true:深克隆，false：浅克隆
+
+   注意：克隆时，标签上的属性和属性值也会被赋值，写在标签行内的绑定事件可以被赋值，但是通过JavaScript动态绑定的事件不会被复制。
+
+6. Node.hasChildNodes():无参数，返回布尔值来表示该元素是否包含有子节点。**不区分**节点类型
+7. node.contains(child):返回布尔值，来表示传入的节点是否为该节点的**后代**节点。

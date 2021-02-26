@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+
+<body>
+    <input type="button" value="关灯" id="btn" style="background-color: black;color: white;">
+    <script>
+        var btn = my$('btn');
+        // 可以使用中间变量来进行判断
+        // var isOpen = true;
+        btn.onclick = function () {
+            if (this.value == '关灯') {
+                document.body.style.backgroundColor = 'black';
+                this.value = '开灯';
+                this.style.color = 'black';
+                this.style.backgroundColor = 'white';
+            } else {
+                document.body.style.backgroundColor = 'white';
+                this.value = '关灯';
+                this.style.color = 'white';
+                this.style.backgroundColor = 'black';
+            }
+        } 
+    </script>
+</body>
+
+</html>

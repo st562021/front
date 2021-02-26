@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .black {
+            color: black;
+        }
+        .gray {
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="请输入关键字" class="gray" id="txt"><br>
+    <input type="button" value="search" id="btn">
+    <script>
+        var txt = document.getElementById("txt");
+        var btn = document.getElementById("btn");
+        txt.onfocus = function () {
+            if (txt.value === "请输入关键字") {
+                txt.className = "black";
+                txt.value = ""; 
+            }
+        };
+        txt.onblur = function () {
+            if (txt.value === "" || txt.value === "请输入关键字") {
+                txt.className = "gray";
+                txt.value = "请输入关键字";
+            }
+        };
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态创建列表</title>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+    <div class="box" id="box">
+        <h2>动态创建列表</h2>
+    </div>
+    <script>
+        var arr = ['张飞','刘备','李逵','王五','李四'];
+        var box = my$("box");
+        var ul = document.createElement("ul");
+        box.appendChild(ul);
+        for(var i = 0; i < arr.length; i++) {
+            var li = document.createElement("li");
+            ul.appendChild(li);
+            li.innerText = arr[i];
+        }
+    </script>
+</body>
+</html>

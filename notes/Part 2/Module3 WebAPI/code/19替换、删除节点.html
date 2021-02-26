@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+    <div class="box" id="box">
+        <p>这是一段内容</p>
+        <p>这是一段内容</p>
+        <p id="p3">这是一段内容</p>
+        <p>这是一段内容</p>
+    </div>
+    <script>
+        var div = document.createElement("div");
+        var id = document.createAttribute("id");
+        var txt = document.createTextNode("hello");
+        var box = my$("box");
+        box.appendChild(div);
+        div.appendChild(txt);
+        // box.replaceChild(div,p3);
+        // box.insertBefore(div,p3);
+        box.removeChild(p3);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+        }
+        .head span {
+            display: inline-block;
+            margin-right: 5px;
+            width: 50px;
+            height: 20px;
+            background-color: pink;
+            text-align: center;
+            cursor: pointer;
+        }
+        .head span.current {
+            background-color: skyblue;
+        }
+        .bottom div{
+            height: 90px;
+            display: none;
+            background-color: skyblue;
+        }
+        .bottom div.current {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="head" id="head">
+            <span class="current">娱乐</span>
+            <span>新闻</span>
+            <span>音乐</span>
+            <span>体育</span>
+        </div>
+        <div class="bottom" id="bottom">
+            <div class="current">娱乐版块</div>
+            <div>新闻版块</div>
+            <div>音乐版块</div>
+            <div>体育版块</div>
+        </div>
+    </div>
+    <script>
+        var head = my$("head")
+        var spans = head.getElementsByTagName("span");
+        var bottom = my$("bottom")
+        var spans2 = bottom.getElementsByTagName("div");
+        for(var i = 0; i < spans.length; i++) {
+            // 新增一个属性来存放对象的下标
+            spans[i].index = i;
+            spans[i].onclick = function () {
+                for(var j = 0; j < spans.length; j++) {
+                    spans[j].className = "";
+                    spans2[j].className = "";
+                }
+                this.className = "current";
+                spans2[this.index].className = "current";
+            };
+            // 对应控制：两组数据存储相同个数的元素对象，一组变化，引起另一组的变化
+
+        }
+    </script>
+</body>
+
+</html>
