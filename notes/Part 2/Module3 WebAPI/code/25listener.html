@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  -->
+    <button id="btn">点击调用</button>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = fun();
+        function fun(){
+            alert(2);
+        };
+        removeEvent(btn,"click",fun);
+        // 自定义一个添加监听的浏览器兼容写法
+        function addEvent(ele, type, fn) {
+            // 浏览器能力检测
+            // ie9及以上
+            if (ele.addEventListener) {
+                ele.addEventListener(type, fn);
+            // ie9及以下
+            } else if (ele.attachEvent) {
+                ele.attachEvent('on' + type, fn);
+            }
+        }
+        // 自定义一个移除监听的浏览器兼容写法
+        function removeEvent(ele,type,fn) {
+            if(ele.removeEventListener) {
+                ele.removeEventListener(type,fn);
+            }else if(ele.detachEvent) {
+                ele.detachEvent('on' + type,fn);
+            }
+        }
+    </script>
+</body>
+
+</html>

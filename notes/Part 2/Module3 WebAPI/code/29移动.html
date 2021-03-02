@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="common.js"></script>
+    <style>
+        #box{
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 300px;
+            height: 200px;
+            border: 7px solid #f6f6f6;
+        }
+        #head {
+            display: flex;
+            height: 25px;
+            background-color: rgb(58, 72, 117);
+        }
+        #tuozhuai {
+            width: 236px;
+        }
+        #close {
+            cursor: pointer;
+            color: #fff;
+        }
+        #box2 {
+            background-color: #fff;
+            height: 175px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="head">
+            <div id="tuozhuai"></div>
+            <span id="close">【关闭】</span>
+        </div>
+        <div id="box2"></div>
+    </div>
+    <script>
+        var box = my$("box");
+        var tuozhuai = my$("tuozhuai");
+        var close = my$("close");
+        // 添加鼠标按下事件，
+        tuozhuai.onmousedown = function(e) {
+            e = e || window.event;
+            // 记录鼠标按下时的初始值
+            var x = e.pageX - box.offsetLeft;
+            var y = e.pageY - box.offsetTop;
+            tuozhuai.onmousemove = function(e) {
+                var nowLeft = e.pageX - x;
+                var nowTop = e.pageY - y;
+                box.style.left = nowLeft + "px";
+                box.style.top = nowTop + "px";
+            };
+        };
+        tuozhuai.onmouseup = function () {
+            tuozhuai.onmousemove = null;
+        };
+        close.onclick = function () {
+            box.style.display = "none";
+        }
+
+    </script>
+</body>
+
+</html>

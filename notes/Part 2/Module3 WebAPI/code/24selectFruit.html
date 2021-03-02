@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +11,12 @@
         select {
             background-color: skyblue;
             height: 200px;
-            width:200px;
+            width: 200px;
             font-size: 20px;
         }
     </style>
 </head>
+
 <body>
     <!-- multiple 规定了能不能同时选中多个选项，size 规定了一次性显示多少选项 -->
     <select name="all" id="all" multiple="multiple" size="5">
@@ -24,13 +26,63 @@
         <option value="pear">梨</option>
         <option value="banana">柚子</option>
     </select>
-    <input type="button" value=">">
-    <input type="button" value=">>">
-    <input type="button" value="<">
-    <input type="button" value="<<">
-    <select name="" id="new" multiple="multiple"></select>
+    <input type="button" value=">" id="btn1">
+    <!-- 全部移动 -->
+    <input type="button" value=">>" id="btn2">
+    <!-- 移动一个 -->
+    <input type="button" value="<" id="btn3">
+    <input type="button" value="<<" id="btn4">
+    <select name="new1" id="new1" multiple="multiple"></select>
     <script>
+        var btn1 = my$("btn1");
+        var btn2 = my$("btn2");
+        var btn3 = my$("btn3");
+        var btn4 = my$("btn4");
+        var all = my$("all");
+        var new1 = my$("new1");
+        var allChildren = all.children;
+        // all.children返回一个节点所有的子元素节点集合，是一个动态更新的html元素集合。
+        // 在元素移动过程中，它的length不断变化，导致元素隔一个移动，
+        // 因此需要放进变量中存放初始长度
+        var num = allChildren.length;
+        var newChildren = new1.children;
+        btn2.onclick = function () {
+            for (var i = 0; i < num; i++) {
+                new1.appendChild(allChildren[0]);
+            }
+        };
+        btn4.onclick = function () {
+            var newNum = newChildren.length;
+            for (var i = 0; i < newNum; i++) {
+                all.appendChild(newChildren[0]);
+            }
+        };
+        btn1.onclick = function () {
+            var arr = [];
+            for (var i = 0; i < allChildren.length;i++) {
+                if(allChildren[i].selected == true){
+                    arr.push(allChildren[i]);
+                }
+            }
+            for(var j = 0; j < arr.length; j++) {
+                new1.appendChild(arr[j]);
+                arr[j].selected = false;
+            }
+        };
+        btn3.onclick = function () {
+            var arr = [];
+            for (var i = 0; i < newChildren.length;i++) {
+                if(newChildren[i].selected == true){
+                    arr.push(newChildren[i]);
+                }
+            }
+            for(var j = 0; j < arr.length; j++) {
+                all.appendChild(arr[j]);
+                arr[j].selected = false;
+            }
+        };
 
     </script>
 </body>
+
 </html>

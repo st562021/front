@@ -112,7 +112,9 @@ var para = document.querySelector("#box1 .para")
 2. 事件类型：绑定什么类型的事件 
 3. 事件函数：事件发生后执行什么内容，写在函数内部。
 
-常用事件监听方法：
+###### 常用事件监听方法：
+
+**DOM0级**
 
 1. 绑定HTML元素属性
 
@@ -318,3 +320,112 @@ previousElementSibling：只读，返回上一个元素节点(兼容问题)
 
 6. Node.hasChildNodes():无参数，返回布尔值来表示该元素是否包含有子节点。**不区分**节点类型
 7. node.contains(child):返回布尔值，来表示传入的节点是否为该节点的**后代**节点。
+
+##### 注册事件的其他方法：
+
+1.element.addEventListener()
+
+参数：第一个为事件类型字符串，第二个为事件函数
+
+同一个元素可以多次绑定事件监听，同一个事件类型可以注册多个事件函数。
+
+有兼容问题(不支持IE9及以下)。	
+
+2.element.attachEvent()
+
+参数：第一个为事件类型的字符串(需要加on)，第二个为事件函数
+
+同一个元素可以多次绑定事件监听，同一个事件类型可以注册多个事件函数。
+
+有兼容问题(只支持IE10及以下)。
+
+3.自己封装
+
+##### 移除事件
+
+1.ele.removeEventListener()
+
+参数：第一个为事件类型的字符串，第二个为事件函数引用名。
+
+注意：无法移除匿名函数，因此在注册时需单独声明有函数名的事件函数。
+
+兼容问题：不支持ie9以下的浏览器
+
+2.ele.detachEvent()
+
+规则同上，事件类型需要加on。
+
+3.自己封装
+
+##### 事件流
+
+先捕获，后冒泡
+
+![](G:\front\notes\Part 2\Module3 WebAPI\事件流.png)
+
+addEventListener()有第三个布尔值的参数，用来决定事件流的方向。false为事件冒泡，true为捕获。默认值为false。
+
+同时存在时，先捕获，后冒泡。
+
+###### 事件流 的三个阶段
+
+捕获--目标事件--冒泡
+
+###### 事件委托
+
+利用事件冒泡，将子级的事件委托给父级加载。
+
+同时，需要利用事件函数的一个e参数，内部存储的是事件对象。
+
+事件对象：
+
+* 只要触发事件，就会有一个对象，内部存储了与事件相关的数据。
+
+* e在低版本浏览器中有兼容问题，使用window.event
+
+* 事件对象常用属性：
+
+  e.event：事件触发时所处的阶段
+
+  e.target：获取触发事件的元素
+
+  e.srcElement：获取触发事件的元素(低版本)
+
+  e.currentTarget: 用于获取绑定事件的事件源元素
+
+  e.type:获取事件类型
+
+  e.clientX/e.clientY: 所有浏览器都支持，鼠标距离浏览器窗口左上角的距离。
+
+  e.pageX/e.pageY  IE8以前不支持，鼠标距离整个HTML页面左上顶点的距离。
+
+##### 取消默认行为和阻止事件传播的方式
+
+e.preventDefualt()  取消默认行为
+
+e.returnValue()  取消默认行为(低版本)
+
+e.stopPropagation()  阻止冒泡，标准方式
+
+e.cancelBubble = true   阻止冒泡，IE低版本，标准中已废弃。
+
+### DOM特效制作
+
+###### 偏移量属性
+
+offsetParent：偏移参考的祖先元素，值有定位的祖先元素，如果没有，则以body作为参考(类似css定位参考)
+
+![](G:\front\notes\Part 2\Module3 WebAPI\offset.png)
+
+###### 客户端大小
+
+* client系列没有参考父级元素
+* clientLeft/clientTop  边框区域尺寸，不常用
+* clientWidth/clientHeight 边框内部大小
+
+![](G:\front\notes\Part 2\Module3 WebAPI\client.png)
+
+###### 滚动偏移属性
+
+* scrollLeft/scrollTop   盒子内部滚动出去的尺寸
+* scrollWidth/scrollHeight  盒子内容的宽度和高度
