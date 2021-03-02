@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onload</title>
+</head>
+
+<body>
+    <div id="box">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var imgs = document.getElementsByTagName("img");
+        // Chrome浏览器渲染加载的机制，由于图片加载事件过长，避免等待，图片在加载过程中，会先执行后面的js代码
+        // 后续需要使用到图片的宽度或高度等尺寸，在js中可能获取不到
+        // imgs.onload = function() {
+        //     console.log(box.clientHeight);
+        // };
+        window.onload = function(){
+            console.log(box.clientHeight);
+        };
+
+    </script>
+</body>
+
+</html>
