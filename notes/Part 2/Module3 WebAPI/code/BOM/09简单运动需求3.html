@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            top: 200px;
+            left:0;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 使box在规定时间内停在指定位置；且初始位置、结束位置和时间间隔可以自定义 -->
+    <!-- 使用count控制 -->
+    <button id="start">开始</button>
+    <div id="box"></div>
+    <script>
+        var start = document.getElementById("start");
+        var box = document.getElementById("box");
+        // 初始位置
+        var nowLeft = box.offsetLeft;
+        var last = 700;
+        // 总时间
+        var time = 2000;
+        // 间隔
+        var ltime = 100;
+        // 移动次数
+        var times = time / ltime;
+        // 移动总距离
+        var distance = last - nowLeft;
+        // 步长
+        var step = distance / times;
+        console.log(step);
+        console.log(times);
+        start.onclick = function(){
+            // 制作动画推荐的时延为50-100毫秒，
+            var count = 0;
+            var timer = setInterval(function(){
+                nowLeft += step;
+                count++;
+                if (count >= times){
+                    // 强行拉回指定位置
+                    nowLeft = last;
+                    clearInterval(timer);
+                }
+                box.style.left = nowLeft + "px";
+            },100)
+        };
+    </script>
+</body>
+</html>

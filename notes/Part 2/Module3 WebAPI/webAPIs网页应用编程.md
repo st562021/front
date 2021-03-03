@@ -28,6 +28,26 @@ console.dir(window.top);// 输出的是window对象，而非23.
 * 利用此事件可以将js代码写到html之前，且不影响js代码的执行
 * 但是一个页面只能使用一次 
 
+###### 延时器
+
+**异步加载**
+
+window对象的一个方法；window.setTimeOut(func,time);
+
+功能：在指定的时间后，延迟执行一个函数。
+
+第一个参数：函数；可以是匿名函数或函数引用，注意不要加();
+
+清除：window.clearTimeOut(timer);
+
+###### 定时器
+
+window.setInterval(func,interval);
+
+功能：每隔一个指定时间，周期性地执行一个函数。
+
+清除：window.clearInterval(timer);
+
 ## DOM-文档对象模型
 
 * 是W3C组织推荐的处理可扩展标记语言的标准编程接口。是一种与平台和语言无关的应用程序接口，可以动态地访问程序和脚本，更新其内容、结构和www文档的风格。

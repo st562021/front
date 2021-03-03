@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            opacity: 0.5;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="start">开始</button>
+    <div id="box"></div>
+    <script>
+        // 获取计算后样式的方法,得到一个style对象
+        var start = document.getElementById("start");
+        var box = document.getElementById("box");
+        start.onclick = function(){
+            animate(box, { left: 600, width: 400, opacity: 1 }, 10000);
+        }
+        // 传三个参数
+        // 1.要运动的对象
+        // 2.最终值(对象形式)
+        // 3.总时间
+        function animate(ele, end, time) {
+            // 初始位置
+            var start = {}
+            for (var k in end) {
+                // 获取属性名，赋值
+                start[k] = parseFloat(getComputedStyle(ele)[k]);
+            }
+            // 时间间隔
+            var interval = 100;
+            // 运动次数
+            var maxCount = time / interval;
+            // 步长
+            var step = {};
+            for (var k in end) {
+                step[k] = (end[k] - start[k]) / maxCount;
+            }
+            console.log(step);
+            // 开始运动
+            var count = 0;
+            var timer;
+            timer = setInterval(function () {
+                count++;
+                for (var k in end) {
+                    console.log(start[k]);
+                    start[k] += step[k];
+                    console.log(start);
+                }
+                if (count >= maxCount) {
+                    for (var k in end) {
+                        start[k] = end[k]; 
+                    }
+                    clearInterval(timer)
+                    console.log(start);
+                }
+                for (var k in end) {
+                    if (k == "opacity") {
+                        ele.style[k] = start[k];
+                    } else {
+                        ele.style[k] = start[k] + "px";
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

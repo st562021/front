@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            top: 200px;
+            left:0;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <button id="start">开始</button>
+    <button id="stop">结束</button>
+    <div id="box"></div>
+    <script>
+        // 定时器会出现的问题：
+        // 1.错误地多次点击开始，会造成定时器叠加，运动加快
+        // 2.多次点击开始后，无法停止定时器，因为只能停掉最外层，内层的定时器无法清除
+        // 因此，在每次设置定时器之前，可以先清除，保证timer内层只有一个定时器
+        var start = document.getElementById("start");
+        var stop1 = document.getElementById("stop");
+        var box = document.getElementById("box");
+        var nextLeft = 0;
+        var timer;
+        start.onclick = function(){
+            clearInterval(timer);
+            // 制作动画推荐的时延为50-100毫秒，
+            timer = setInterval(function(){
+                nextLeft += 10;
+                box.style.left = nextLeft + "px";
+            },100)
+        };
+        stop1.onclick = function () {
+            clearInterval(timer);
+        }
+    </script>
+</body>
+</html>

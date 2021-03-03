@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+        var btn = document.getElementById("btn");
+        var num = Math.random();
+        var lock = false;
+        // 定义一个锁，锁住函数，不允许连续点击
+        btn.onclick = function(){
+            if(lock){
+                return;
+            }
+            console.log(num);
+            lock = true;
+            setTimeout(function(){
+                lock = false;
+            },2000);
+        }
+    </script>
+</body>
+</html>

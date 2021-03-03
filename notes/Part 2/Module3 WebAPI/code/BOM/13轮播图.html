@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,ol{
+            list-style: none;
+        }
+        .box {
+            position: relative;
+            margin: 100px auto;
+            width: 880px;
+            height: 550px;
+            overflow: hidden;
+
+        }
+        .box ul {
+            margin: 0;
+            padding: 0;
+            width: 5000px;
+        }
+        .box ul li {
+            float: left;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+        .btn span {
+            width: 18px;
+            height: 34px;
+        }
+        .btn .btn1 {
+            position:absolute;
+            top: 266px;
+            left: 30px;
+            background: url(images/banner_arrow_left_highlight.png) no-repeat center;
+        }
+        .btn .btn2 {
+            position:absolute;
+            top: 266px;
+            right: 30px;
+            background: url(images/banner_arrow_right_highlight.png) no-repeat center;
+        }
+        ol {
+            position: absolute;
+            bottom: 20px;
+            left: 400px;
+            height: 10px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="images/lunbo/01.jpg" alt=""></li>
+            <li><img src="images/lunbo/02.jpg" alt=""></li>
+            <li><img src="images/lunbo/03.jpg" alt=""></li>
+            <li><img src="images/lunbo/04.jpg" alt=""></li>
+            <li><img src="images/lunbo/05.jpg" alt=""></li>
+        </ul>
+        <div class="btn">
+            <span class="btn1" id="btn1"></span>
+            <span class="btn2" id="btn2"></span>
+        </div>
+        <ol>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+        </ol>
+    </div>
+</body>
+</html>

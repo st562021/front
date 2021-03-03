@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .scroll {
+            position: relative;
+            width: 830px;
+            height: 130px;
+            overflow: hidden;
+            margin: 100px auto
+        }
+        
+        #unit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            width: 5000px;
+            height: 130px;
+            list-style: none;
+
+        }
+
+        li {
+            float: left;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll1" id="scroll">
+        <ul id="unit">
+            <li><img src="images/shuzi/0.png" alt="数字"></li>
+            <li><img src="images/shuzi/1.png" alt="数字"></li>
+            <li><img src="images/shuzi/2.png" alt="数字" width="200px" height="130px"></li>
+            <li><img src="images/shuzi/3.png" alt="数字"></li>
+            <li><img src="images/shuzi/4.png" alt="数字"></li>
+            <li><img src="images/shuzi/5.png" alt="数字"></li>
+            <li><img src="images/shuzi/6.png" alt="数字"></li>
+            <li><img src="images/shuzi/7.png" alt="数字"></li>
+            <li><img src="images/shuzi/8.png" alt="数字"></li>
+            <li><img src="images/shuzi/0.png" alt="数字"></li>
+            <li><img src="images/shuzi/1.png" alt="数字"></li>
+            <li><img src="images/shuzi/2.png" alt="数字" width="200px" height="130px"></li>
+            <li><img src="images/shuzi/3.png" alt="数字"></li>
+            <li><img src="images/shuzi/4.png" alt="数字"></li>
+            <li><img src="images/shuzi/5.png" alt="数字"></li>
+            <li><img src="images/shuzi/6.png" alt="数字"></li>
+            <li><img src="images/shuzi/7.png" alt="数字"></li>
+            <li><img src="images/shuzi/8.png" alt="数字"></li>
+        </ul>
+    </div>
+    <script>
+        var scroll1 = document.getElementById("scroll");
+        var unit = document.getElementById("unit");
+        var end = -1880;
+        var timer;
+        var now = 0;
+        //    1.循环播放
+        timer = setInterval(run, 20);
+        //    2.鼠标移上时停止
+        scroll.onmouseover = function () {
+            clearInterval(timer);
+        }
+        //    3.鼠标松开时继续
+        scroll.onmouseout = function () {
+            timer = setInterval(run, 20);
+        }
+        function run() {
+            now -= 10;
+            if (now <= end) {
+                now = 0;
+                // 此处不能清除定时器，否则无法循环播放
+            }
+            unit.style.left = now + "px";
+        }
+    </script>
+</body>
+
+</html>
