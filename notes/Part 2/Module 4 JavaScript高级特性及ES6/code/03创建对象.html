@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 创建函数的方法
+        // 1.new Object
+        // 2.对象字面量 {}
+        // 3.工厂函数的方法
+        function createPerson(name,age) {
+            return {
+                name : name
+                ,age : age
+                ,sayName : function () {
+                    console.log(name);
+                }
+            };
+        }
+        // 生成真正的对象
+        var person1 = createPerson("Bob",18);
+        var person2 = createPerson("Tom",18);
+        // 工厂函数创建对象的弊端：无法准确判断出对象的类型，只是泛泛的Object类型。
+    </script>
+</body>
+</html>

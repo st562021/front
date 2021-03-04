@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name,age) {
+            this.name = name;
+            this.age = age;
+            this.printAge = function() {
+                console.log(age);
+            };
+        }
+        var p1 = new Person("zs",15);
+        console.log(p1 instanceof Person); // true
+        // new关键字的用途
+        // function Person(name, age) {
+        //     // 1.创建一个对象
+        //     var instance = new Object();
+        //     // 2.让this指向这个对象
+        //     this = instance;
+        //     // 3.执行内部代码
+        //     this.name = name;
+        //     this.age = age;
+        //     // 4.将这个对象作为返回值
+        //     return instance;
+        // }
+    </script>
+</body>
+
+</html>

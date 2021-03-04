@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 面向对象中，将一个学生当成一个对象，对象有两个属性存储姓名和成绩，并且对象自己有打印成绩的功能，
+        // 将所有跟学生有关的属性和行为都封装到对象身上，
+        // 在这个过程中，我们已知会有多个类似的对象，可以利用构造函数的方法先进行封装，然后创建单独的对象
+        // 抽象所有的数据行为成一个模板(Class)
+        function Student(name, score) {
+            this.name = name;
+            this.score = score;
+            this.printScore = function () {
+                console.log("学生的姓名是：" + this.name + ";学生的成绩是：" + this.score);
+            };
+        }
+        // 根据模板创建具体的实例对象(Instance)
+        var stu1 = new Student("zs",85);
+        var stu2 = new Student("li",85);
+        stu1.printScore();
+        stu2.printScore();
+    </script>
+</body>
+
+</html>
