@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text {
+            color: gray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="text" id="text" value="请输入搜索关键字">
+    <script>
+        var text = document.getElementById("text");
+        text.onfocus = function () {
+            if (this.value == "请输入搜索关键字") {
+                this.value = "";
+                this.style.color = "black";
+            }
+        };
+        text.onblur = function () {
+            if(this.value === ""){
+                this.value = "请输入搜索关键字";
+                this.style.color = "gray";
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="unit">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var unit = document.getElementById("unit");
+        var list = unit.children;
+        unit.onclick = function(e){
+            for(var i=0;i<list.length;i++) {
+                list[i].style.backgroundColor = "";
+            }
+            // e.target存储的是真正触发的事件源
+            e.target.style.backgroundColor = "pink";
+
+        };
+
+    </script>
+</body>
+</html>

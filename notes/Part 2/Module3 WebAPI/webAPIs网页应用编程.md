@@ -48,6 +48,24 @@ window.setInterval(func,interval);
 
 清除：window.clearInterval(timer);
 
+###### location对象
+
+window对象下的一个属性。
+
+location可以获取或设置浏览器地址栏的URL
+
+###### history对象
+
+可以与浏览器历史记录进行交互，浏览器历史记录是对用户所访问的页面按时间顺序进行的记录和保存。
+
+方法：back();forward();go()
+
+go()的参数为数字，正值为前进几级，负值为后退几级。
+
+##### url
+
+![](G:\front\notes\Part 2\Module3 WebAPI\url.png)
+
 ## DOM-文档对象模型
 
 * 是W3C组织推荐的处理可扩展标记语言的标准编程接口。是一种与平台和语言无关的应用程序接口，可以动态地访问程序和脚本，更新其内容、结构和www文档的风格。

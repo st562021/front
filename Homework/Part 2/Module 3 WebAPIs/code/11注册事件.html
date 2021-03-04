@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="start">点击</button>
+    <script>
+        var start = document.getElementById("start");
+        addEvent(start, "click", change);
+        // 传三个参数
+        function addEvent(ele, type, fun) {
+            // 浏览器能力检测
+            if (ele.addEventListener) {
+                ele.addEventListener(type, fun);
+            } else if (ele.attachEvent) {
+                ele.attachEvent("on" + type, fun);
+            }
+        }
+        function change() {
+            alert(2);
+        }
+    </script>
+</body>
+
+</html>

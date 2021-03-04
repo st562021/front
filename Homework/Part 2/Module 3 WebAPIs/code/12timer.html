@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <button id="start">点击开始</button>
+    <button id="stop">点击结束</button>
+    <div id="box"></div>
+    <script>
+        var start = document.getElementById("start");
+        var stops = document.getElementById("stop");
+        var box = document.getElementById("box");
+        var timer;
+        var nowLeft = 0;
+        start.onclick = function(){
+            clearInterval(timer);
+            timer = setInterval(run,50);
+        };
+        stops.onclick = function(){
+            clearInterval(timer);
+        };
+        function run(){
+            nowLeft += 10;
+            box.style.left = nowLeft + "px";
+        }
+    </script>
+</body>
+</html>

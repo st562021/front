@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        ul,ol{
+        ul,
+        ol {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
+
         .box {
             position: relative;
             margin: 100px auto;
@@ -17,45 +22,72 @@
             overflow: hidden;
 
         }
+
         .box ul {
-            margin: 0;
-            padding: 0;
             width: 5000px;
         }
+
         .box ul li {
             float: left;
             margin-right: 10px;
             overflow: hidden;
+            display: none;
         }
+
+        .box ul .current {
+            display: block;
+        }
+
         .btn span {
             width: 18px;
             height: 34px;
         }
+
         .btn .btn1 {
-            position:absolute;
+            position: absolute;
             top: 266px;
             left: 30px;
             background: url(images/banner_arrow_left_highlight.png) no-repeat center;
         }
+
         .btn .btn2 {
-            position:absolute;
+            position: absolute;
             top: 266px;
             right: 30px;
             background: url(images/banner_arrow_right_highlight.png) no-repeat center;
         }
+
         ol {
             position: absolute;
             bottom: 20px;
             left: 400px;
             height: 10px;
-            background-color: pink;
+        }
+
+        li {
+            float: left;
+            margin-right: 5px;
+        }
+
+        span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        ol .current span {
+            background-color: rgba(255, 255, 255, 1);
+
         }
     </style>
 </head>
+
 <body>
-    <div class="box">
-        <ul>
-            <li><img src="images/lunbo/01.jpg" alt=""></li>
+    <div class="box" id="box">
+        <ul id="unit">
+            <li class="current"><img src="images/lunbo/01.jpg" alt=""></li>
             <li><img src="images/lunbo/02.jpg" alt=""></li>
             <li><img src="images/lunbo/03.jpg" alt=""></li>
             <li><img src="images/lunbo/04.jpg" alt=""></li>
@@ -65,12 +97,74 @@
             <span class="btn1" id="btn1"></span>
             <span class="btn2" id="btn2"></span>
         </div>
-        <ol>
+        <ol id="sub">
+            <li class="current"><span></span></li>
             <li><span></span></li>
             <li><span></span></li>
             <li><span></span></li>
             <li><span></span></li>
         </ol>
     </div>
+    <script>
+        // 1.获取元素
+        var box = document.getElementById("box");
+        var unit = document.getElementById("unit");
+        var ulist = unit.children;
+        console.log(ulist);
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var sub = document.getElementById("sub");
+        var sublist = sub.children;
+        // 信号量思想，全局使用信号量传递信息
+        // 下标
+        var inx = 0;
+        // 2.右按钮事件，点击切换到下一张
+        btn2.onclick = rightHandle;
+        // 2.左按钮事件，点击切换到上一张
+        btn1.onclick = function () {
+            inx--;
+            if (inx < 0) {
+                inx = ulist.length - 1;
+            }
+            change();
+        };
+        // 下标小圆点事件
+        for (var i = 0; i < sublist.length; i++) {
+            sublist[i].index = i;
+            sublist[i].onclick = function () {
+                inx = this.index;
+                change();
+            }
+        }
+        // 轮播图自动播放
+        var timer;
+        timer = setInterval(rightHandle, 1000);
+        // 鼠标移上，停止自动播放
+        box.onmouseover = function(){
+            clearInterval(timer);
+        };
+        // 鼠标放开，继续自动播放
+        box.onmouseout = function () {
+            timer = setInterval(rightHandle, 1000);
+        };
+        // 切换函数
+        function change() {
+            for (var i = 0; i < ulist.length; i++) {
+                ulist[i].className = "";
+                sublist[i].className = "";
+            }
+            ulist[inx].className = "current";
+            sublist[inx].className = "current";
+        }
+        // 右按钮函数
+        function rightHandle() {
+            inx++;
+            if (inx > ulist.length - 1) {
+                inx = 0;
+            }
+            change();
+        }
+    </script>
 </body>
+
 </html>

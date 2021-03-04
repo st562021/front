@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #start {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="start">请点击</button><br>
+    <select name="fruit" id="fruit">
+        <option value="Apple" selected>苹果</option>
+        <option value="pear">梨</option>
+        <option value="banana">香蕉</option>
+        <option value="orange">橘子</option>
+        <option value="peach">桃子</option>
+    </select>
+    <script>
+        var start = document.getElementById("start");
+        var fruit = document.getElementById("fruit");
+        var fruits = fruit.children;
+        start.onclick = function () {
+            var m = getRandomIntInclusive(0, fruits.length-1);
+            for(var i = 0;i < fruit.length; i++){
+                fruits[i].selected = false;
+            }
+            fruits[m].selected = true;
+        };
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            // 输出location对象
+            console.log(location);
+            // 重新赋值，可以跳转到新页面，并且记录历史
+            location.href = "http://www.lagou.com";
+            // assign 委派，与href属性一样，可以设置跳转的地址
+            location.assign("http://www.lagou.com");
+            // replace 替换掉地址栏中当前的地址，不记录历史
+            location.replace("http://www.lagou.com");
+            // reload 重新加载
+            // false类似f5刷新页面，true类似Ctrl+f5：强制刷新，从服务器获取页面
+            // 参数 
+            // true：强制刷新，从服务器获取页面  false：如果浏览器有缓存，会直接从缓存中获取页面
+            location.reload(true);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 500px;
+        }
+        #box input {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var inputs = box.children;
+        for(var i = 0;i < inputs.length; i++){
+            inputs[i].onclick = function () {
+                for(var j = 0; j < inputs.length; j++) {
+                    inputs[j].style.backgroundColor = "white";
+                }
+                this.style.backgroundColor = "lightgray";
+            }
+        }
+    </script>
+</body>
+</html>
