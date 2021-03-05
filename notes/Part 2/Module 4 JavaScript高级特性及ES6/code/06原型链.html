@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+        Person.prototype.type = "human";
+        Person.prototype.sayName = function () {
+            console.log(this.name);
+        }
+        // 新增复杂类型的属性
+        Person.prototype.address = {
+            city: "Taiyuan"
+        };
+        var p1 = new Person(001, "Tom");
+        // 通过实例对象添加新成员，会直接添加给自己，屏蔽对原型对象的访问
+        p1.age = 18;
+        // 更改，也会直接添加给自己
+        p1.sayName = function () {
+            console.log(b);
+        }
+        p1.address.city = "xinzhou";
+        console.dir(p1);
+    </script>
+</body>
+
+</html>
