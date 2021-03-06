@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        function Student(name,age,sex,grade) {
+            // Person()普通调用时，this指向window，因此需要修改this的指向,指向student对象
+            // Person();
+            Person.call(this,name,age,sex);
+            this.grade = grade;
+        }
+        function Teacher(name,age,sex,salary){
+            Person.call(this,name,age,sex);
+            this.salary = salary;
+        }
+        var s1 = new Student('zs',18,0,3);
+        console.log(s1);
+    </script>
+</body>
+</html>

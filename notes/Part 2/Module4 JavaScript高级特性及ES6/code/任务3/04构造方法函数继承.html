@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        Person.prototype.sayHi = function(){
+            console.log("Hi");
+        }
+        function Student(name, age, sex, grade) {
+            Person.call(this, name, age, sex);
+            this.grade = grade;
+        }
+        // 1.对象拷贝继承
+        for(var k in Person.prototype) {
+            if(k === "constructor") {
+                continue;
+            }
+            Student.prototype[k] = Person.prototype[k];
+        }
+        // 2.原型继承
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        var p1 = new Person('zs',18,0);
+        p1.sayHi();
+        var s1 = new Student('zzs',18,0,2);
+        s1.sayHi();
+    </script>
+</body>
+
+</html>

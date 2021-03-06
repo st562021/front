@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        Person.prototype.sayHi = function(){
+            console.log("sayHi");
+        };
+        function Student(name, age, sex, grade) {
+            // 继承属性
+            Person.call(this, name, age, sex);
+            this.grade = grade;
+        }
+        // 继承方法
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        var s1 = new Student('zs',18,0,5);
+        console.dir(s1);
+
+        s1.sayHi();
+    </script>
+</body>
+
+</html>

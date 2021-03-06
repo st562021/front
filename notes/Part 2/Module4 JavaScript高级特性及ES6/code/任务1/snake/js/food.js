@@ -31,9 +31,9 @@
         this.arr.push(this.ele);
     };
     // 移除食物方法
-    Food.prototype.remove = function (map) {
-        map.removeChild(this.arr[0]);
-        this.arr.splice(0, 1)
+    Food.prototype.remove = function (map,i) {
+        map.removeChild(this.arr[i]);
+        this.arr.splice(i, 1)
     };
     window.Food = Food;
 })();
