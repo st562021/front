@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(a,b,c){
+            console.log(fn.caller);
+            console.log(fn.length);
+        }
+        console.dir(fn);
+        // arguments:存储的是函数在调用时传入的所有实参组成的一个类数组对象
+        fn(5,4,2);
+        // arguments.callee:函数本身
+        // fn.caller：函数的调用者，函数在哪个作用域调用，caller就是谁。如果在全局调用，值就是null
+        // fn.length：形参的个数
+        // fn.name：函数名称
+        // 使用arguments模仿一个Math.max()
+        function max(a,b,c,d,e){
+            var nowMax = max.arguments[0];
+            for(var i = 1;i < arguments.length;i++){
+                if(max.arguments[i] > nowMax) {
+                    nowMax = max.arguments[i]
+                }
+            }
+            return nowMax;
+
+        }
+        var f = max(5,8,6,12,7);
+        console.log(f);
+
+    </script>
+</body>
+</html>

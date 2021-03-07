@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var o = {
+            0:10,
+            1:20,
+            2:30,
+            length:3
+        };
+        // 需求，向o增加新数据，并且length随之改变
+        // 利用数组中的push方法，指定内部的this，来处理类数组对象的数据
+        Array.prototype.push.call(o,50);
+        console.log(o);
+    </script>
+</body>
+</html>
