@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 模板字符串标签函数,Tag为特定函数
+        // const str = Tag`Hello`;
+        const str = console.log`Hello`; // 输出一个数组
+        const name = 'Tom';
+        const gender = true;
+        function myFunc(strings,name,gender) {
+            const sex = gender?'男孩':'女孩';
+            return strings[0] + name + strings[1] + sex + strings[2];
+        }
+        // 以插值为分隔符对字符串进行分割
+        const str1 = myFunc`Hi,${name} is a ${gender}`;
+        console.log(str1);
+
+
+    </script>
+</body>
+</html>

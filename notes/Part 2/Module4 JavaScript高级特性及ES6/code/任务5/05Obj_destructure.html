@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对象根据属性名进行解构
+        const people = {name:'Tom',age:18};
+        const name = 'Bob';
+// 使用属性名进行解构，存放到新的名字中。否则会报已经被声明的错误
+        const { name:newName } = people;
+        console.log(newName);
+
+
+        // 应用
+        // 简化代码，加快传输速度
+        const {log} = console;
+        log("hahha");
+    </script>
+</body>
+</html>

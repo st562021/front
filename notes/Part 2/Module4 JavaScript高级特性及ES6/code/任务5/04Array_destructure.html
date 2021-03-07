@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 数组解构
+    const arr = [10,20,30];
+    const[a,b,c] = arr;
+    console.log(a); //10
+    // ...rest 表示除了前面的之外，其余都存进rest数组中
+    const [d,...rest] = arr;
+    console.log(rest); //[20,30]
+    // 不想存储某些，只想取出特定值时，用,保留位置
+    const [,,f] = arr;
+    console.log(f); //30
+    // 给默认值，如果能接收到值，则取接收到的值，否则取默认值
+    const [g,h=18,i,j=55] = arr;
+    console.log(h); // 20
+    console.log(j); //55
+
+    </script>
+</body>
+</html>
