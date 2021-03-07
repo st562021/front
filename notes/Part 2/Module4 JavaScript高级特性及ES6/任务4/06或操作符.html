@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 会将整个表达式分成两个部分  以a开头或以bcd结尾
+        var reg = /^a|bcd$/; 
+        var str = "abcd";
+        console.log(reg.test(str)); // true
+        // 如果不让两者同时出现，则需要进行分组
+         var reg1 = /^(a|bcd)$/;
+    </script>
+</body>
+</html>

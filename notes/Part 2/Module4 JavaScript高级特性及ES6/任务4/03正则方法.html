@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // exec() 在字符串中寻找匹配字符串，该方法比其他正则方法或字符串支持的更复杂
+        // 不论有无全局修饰符，都会在第一次找到符合的内容后停止
+        var str1 = "aaaaabgccccabcddd";
+        var reg = /abc/;
+        var arr = reg.exec(str1);
+        console.log(arr);
+
+
+        // test() 检测字符串是否匹配正则表达，返回布尔值
+    </script>
+</body>
+</html>

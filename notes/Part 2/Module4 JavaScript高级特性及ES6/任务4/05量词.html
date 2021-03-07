@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量词</title>
+</head>
+<body>
+    <script>
+        // 硬性量词 {n}
+        // 表示必须有连续的n个符合条件的出现，多或少都不行
+        var reg = /^\d{3}$/;
+        console.log(reg.test("33")); // false
+        console.log(reg.test("333"));// true
+        console.log(reg.test("3333"));  // false
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 正则中使用普通字符会进行精确匹配，使用特殊字符会进行模糊匹配
+        // 在字符串中书写换行
+        var str = `ansf
+        dsad`;
+        var reg = /\n/;
+        console.log(reg.test(str));// true
+        var reg1 = /o[^0-9]t/;
+        var str1 = "osdt";
+        console.log(reg1.test(str1));// false
+    </script>
+</body>
+</html>

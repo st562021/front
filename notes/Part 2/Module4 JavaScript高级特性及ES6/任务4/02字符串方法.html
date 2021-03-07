@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // split()   分割字符串
+        var str = "bbbabcccaaaacccchccaaaaaaf";
+        // 使用正则表达式可以进行模糊匹配分割
+        // 一个或多个a作为分隔符
+        var arr = str.split(/a+/);
+        console.log(arr);
+
+
+        // search():查询子串在父字符串中第一次出现的位置,可以使用正则，
+        // 类似indexOf(),但是indexOf()中不能使用正则匹配
+        // 存在则返回一个>=1的数，不存在时返回-1
+        var str1 = "abcdfg";
+        console.log(str1.search("cd"));// 2
+        console.log(str1.search(/fg/));// 4
+
+        // match()  在父字符串中匹配符合的子字符串，将结果输出到数组中
+        var str2 = "aaaagbfffbbbbbbfxhsk";
+        // 在匹配到第一个之后就会结束
+        // console.log(str.match(/b+/));
+        // 找到所有匹配的字符串后结束
+        console.log(str2.match(/b+/g));
+
+        var str3 = "asc  c dcdsc c"
+        console.log(str3.match(/c\s+c/g)); 
+
+
+        // replace() :替换字符串的指定部分，返回一个新的字符串，原始字符串不受影响
+        var str4 = "www.hello.com";
+        var str5 = str4.replace(/hello/,"bye");
+        console.log(str4);
+        console.log(str5);
+
+    </script>
+</body>
+</html>
