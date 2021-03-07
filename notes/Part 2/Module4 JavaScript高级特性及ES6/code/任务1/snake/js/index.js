@@ -20,6 +20,7 @@
             return "rgb(" + r + "," + g + "," + b + ")";
         }
     };
+    window.tool = tool;
 })(window, undefined);
 // ===================================食物=============================
 (function (window, undefined) {
@@ -38,15 +39,15 @@
     Food.prototype.render = function (map) {
         // 后期设置随机位置时需要使用，但是不能再另一个函数中调用其他函数的局部变量
         // 因此直接将ele属性添加到原型对象上，方便使用
-        this.ele = document.createElement("div");
-        this.ele.style.width = this.width + "px";
-        this.ele.style.height = this.height + "px";
-        this.ele.style.backgroundColor = this.backgroundColor;
-        this.ele.style.top = (tool.getRandom(0, (map.clientHeight / this.height - 1) * this.height)) + "px";
-        this.ele.style.left = (tool.getRandom(0, (map.clientWidth / this.width - 1) * this.width)) + "px";
-        this.ele.style.position = abs;
-        map.appendChild(this.ele);
-        this.arr.push(this.ele);
+        var ele = document.createElement("div");
+        ele.style.width = this.width + "px";
+        ele.style.height = this.height + "px";
+        ele.style.backgroundColor = this.backgroundColor;
+        ele.style.top = (tool.getRandom(0, map.clientHeight / this.height - 1) * this.height) + "px";
+        ele.style.left = (tool.getRandom(0, map.clientWidth / this.width - 1) * this.width) + "px";
+        ele.style.position = abs;
+        map.appendChild(ele);
+        this.arr.push(ele);
     };
     // 移除食物方法
     Food.prototype.remove = function (map, i) {
@@ -117,7 +118,7 @@
     Snake.prototype.remove = function (map) {
         // 清空HTML结构
         var len = this.arr.length;
-        for (var i = 0; i < len; i++) {
+        for (var i = len - 1; i >= 0; i--) {
             map.removeChild(this.arr[i]);
         }
         // 清空数组
@@ -157,21 +158,25 @@
             timer = setInterval(function () {
                 // 此时使用的this指向window，而非game对象，因此需要在外部定义全局变量存储this
                 that.snake.move();
+                that.snake.remove(that.map);
+                that.snake.render(that.map);
                 // 判断是否出界，如果出界，则停止运动
                 headX = that.snake.body[0].x;
                 headY = that.snake.body[0].y;
                 var hX = headX * that.snake.width;
                 var hY = headY * that.snake.height;
+                console.log('headX' + hX + 'headY' + hY);
+                console.log(that.food.arr);
                 // 判断是否吃到食物及吃到食物后的行为
                 for (var i = 0; i < that.food.arr.length; i++) {
-                    if (that.food.arr[i].offsetWidth === hX && that.food.arr[i].offsetHeight === hY) {
+                    if (that.food.arr[i].offsetLeft === hX && that.food.arr[i].offsetTop === hY) {
+                        console.log('吃到');
                         // 吃到食物
-                        that.food.remove(that.map);
+                        that.food.remove(that.map,i);
                         // 再生成一个新食物
                         that.food.render(that.map);
                         // 添加新蛇节
                         var new1 = that.snake.body[that.snake.body.length - 1];
-                        that.snake.arr.push(new1);
                         that.snake.body.push({
                             x: new1.x,
                             y: new1.y,
@@ -182,11 +187,10 @@
                 if (headX < 0 || headX >= maxX || headY < 0 || headY >= maxY) {
                     clearInterval(timer);
                     alert("Game Over");
-                } else {
-                    that.snake.remove(that.map);
-                    that.snake.render(that.map);
-                }
-            }, 500);
+                } 
+
+                
+            }, 150);
         }
         // 键盘控制运动方向
         function bindKey() {

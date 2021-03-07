@@ -4,8 +4,8 @@
 // 代码压缩时，window会被替换为更短的字符，加快传输速度 
 // undefined：在ie8及以下，undefined可以被修改，此时我们要确保使用的是一个未定义的值，因此传入undefined
 // ===================================工具=============================
-(function(window, undefined){
-    var Tools = {
+(function (window, undefined) {
+    var tool = {
         // 生成随机数函数
         getRandom: function getRandomIntInclusive(min, max) {
             min = Math.ceil(min);
@@ -20,7 +20,6 @@
             return "rgb(" + r + "," + g + "," + b + ")";
         }
     };
-    window.Tools = Tools;
 })(window, undefined);
 // ===================================食物=============================
 (function (window, undefined) {
@@ -39,17 +38,15 @@
     Food.prototype.render = function (map) {
         // 后期设置随机位置时需要使用，但是不能再另一个函数中调用其他函数的局部变量
         // 因此直接将ele属性添加到原型对象上，方便使用
-        var ele = document.createElement("div");
-        this.x = Tools.getRandom(0, (map.clientWidth / this.width - 1) * this.width);
-        this.y = Tools.getRandom(0, (map.clientHeight / this.height - 1) * this.height);
-        ele.style.width = this.width + "px";
-        ele.style.height = this.height + "px";
-        ele.style.backgroundColor = this.backgroundColor;
-        ele.style.top = this.y + "px";
-        ele.style.left = this.x + "px";
-        ele.style.position = abs;
-        map.appendChild(ele);
-        this.arr.push(ele);
+        this.ele = document.createElement("div");
+        this.ele.style.width = this.width + "px";
+        this.ele.style.height = this.height + "px";
+        this.ele.style.backgroundColor = this.backgroundColor;
+        this.ele.style.top = (tool.getRandom(0, (map.clientHeight / this.height - 1) * this.height)) + "px";
+        this.ele.style.left = (tool.getRandom(0, (map.clientWidth / this.width - 1) * this.width)) + "px";
+        this.ele.style.position = abs;
+        map.appendChild(this.ele);
+        this.arr.push(this.ele);
     };
     // 移除食物方法
     Food.prototype.remove = function (map, i) {
