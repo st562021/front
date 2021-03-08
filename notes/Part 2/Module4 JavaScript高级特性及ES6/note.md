@@ -67,7 +67,7 @@
 
 ##### 构造函数、实例、原型对象三者之间的关系
 
-![](G:\front\notes\Part 2\Module 4 JavaScript高级特性及ES6\原型关系.png)
+![](G:\front\notes\Part 2\Module4 JavaScript高级特性及ES6\原型关系.png)
 
 ##### 内置构造函数的原型对象
 
@@ -77,7 +77,7 @@
 
 #### 原型链
 
-![](G:\front\notes\Part 2\Module 4 JavaScript高级特性及ES6\原型链.png)
+![](G:\front\notes\Part 2\Module4 JavaScript高级特性及ES6\原型链.png)
 
 ##### 原型链查找机制
 
@@ -505,6 +505,8 @@ b1.sayHi();
 #### 静态成员
 ##### 创建静态方法
 
+直接在类上调用，不能通过类的实例进行调用。这些通常是实用程序方法，例如创建或克隆对象的功能。
+
 ```js{cmd=node}
 class Block{
     constructor(name,age) {
@@ -555,7 +557,8 @@ const s1 = new Student('Mary',18,1001);
 console.log(s1);
 s1.hello();
 ```
-####set数据结构(集合)
+#### set数据结构(集合)
+
 内部数据不允许重复
 遍历方式：for。。。each  for。。。of
 size属性：类似数组中的length
@@ -564,6 +567,7 @@ has():判断集合中是否包含某个值
 delete() 删除某项，并返回一个布尔值表示是否删除成功
 clear() 清除当前集合中的全部内容
 应用：数组去重
+
 ```js{cmd=node}
 const s = new Set();
 s.add(1).add(2).add(3).add(4).add(3);
@@ -579,7 +583,8 @@ const s2 = Array.from(new Set(arr));
 const s3 = [...new Set(arr)];
 console.log(s3); // [1,3,2,4]
 ```
-####Map数据结构
+#### Map数据结构
+
 在对象中，键都是字符串类型的(即使设置的是数字或布尔值)。
 使用Obj.keys()查看键
 map.set(键,值)
@@ -588,6 +593,7 @@ map.has()
 map.delete()
 map.clear()
 在map中即使键是任意类型，不会转为字符串
+
 ```js{cmd=node}
 const map = new Map();
 const m = {a:1};

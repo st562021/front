@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = prompt("");
+        panduan = (a) => {
+            if (a.length >= 6 && a.length <= 8) {
+                if (/\_/.test(a) && /\w+/.test(a) && /[\u4e00-\u9fa5]/.test(a)) {
+                    console.log("输入正确");
+                } else{
+                    console.log("Error");
+                }
+            }else {
+                    console.log("请重新输入");
+                }
+        }
+        panduan(a);
+
+    </script>
+</body>
+
+</html>
