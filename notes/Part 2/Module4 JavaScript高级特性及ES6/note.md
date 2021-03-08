@@ -343,3 +343,295 @@ const:
 ```
 
 **推荐：不用var 主用const 配合let**
+
+#### 数组的解构
+
+参见案例代码
+
+#### 字符串扩展方法
+
+includes()  startsWith()  endsWith()
+
+函数参数默认值
+
+多个参数时，要将设置了默认值的参数往后拿，否则会出现参数接收不对应的情况
+```js{cmd=node}
+function foo(bar,enable = true){
+    console.log(bar,enable);
+}
+foo('23'); // 23 true
+foo('35',false);  // 35 false
+```
+
+#### 剩余参数 ...
+
+函数中将所有形参存放在arguments的类数组中，我们可以使用剩余操作符，将参数存放在一个数组中，这个符号及参数必须写在最后一位且只能使用一次
+```js{cmd=node}
+function fun(...args){
+    console.log(args);
+}
+function foo(n,...args){
+    console.log(args);
+}
+fun(1,2,3,4); // [1,2,3,4]
+foo(1,2,3,4); // [2,3,4]
+```
+
+##### 还可以用作展开数组
+
+```js{cmd=node}
+const arr = [1,2,3,4];
+console.log.apply(console,arr);// 1 2 3 4
+```
+
+#### 箭头函数
+
+简化回调函数，清晰易懂
+定义一个函数名，第二位是参数，多个参数时可以使用(),箭头指向的是返回值。单个语句时可以省略{}和return不写，多个时需要补全。
+
+```js{cmd=node}
+const foo = (a,b) => a + b;
+console.log(foo(5,8)); // 13
+```
+
+##### 箭头函数内部没有this 会去外面找
+
+提示：需要使用其他变量来存放想要的this指向时，都可以使用箭头函数来代替，如在定时器延时器内部的函数
+
+```js{cmd=node}
+const person = {
+    name: 'Tom',
+    sayHi: function (){
+        console.log(`Hi,My name is ${this.name}`)
+        },
+}
+person.sayHi(); // Hi,My name is Tom
+const person1 = {
+    name: 'Tom',
+    sayHi: () =>
+        console.log(`Hi,My name is ${this.name}`)
+}
+// 内部没有this，去外面没找到，因此为undefined
+person1.sayHi(); // Hi,My name is undefined
+        const person2 = {
+            name: 'Tom',
+            sayHi: function(){
+                setTimeout(() => { console.log(`Hi,My name is ${this.name}`) },1000);
+            }
+        }
+person2.sayHi(); // Hi,My name is Tom
+
+```
+
+#### 对象字面量的增强
+
+1.用变量定义一个值，对象的属性名和要传进来的变量名相同时，变量名可以省略不写。
+2.对象中的函数可省略 : function不写
+3.对象中允许有动态添加属性名的方式
+```js{cmd=node}
+const bar = 'bar';
+const age = "sex";
+const person = {
+    name: 'John',
+    bar,
+    [age]: '男',
+    sayHi () {
+        console.log("Hi");
+    }
+
+}
+console.log(person); // {name: 'John', bar: 'bar',sex: '男',sayHi}
+person.sayHi(); // Hi
+```
+
+#### 对象方法
+
+##### assign()
+
+将多个源对象中的属性赋值到一个目标对象中。
+```js{cmd=node}
+const s1 = {
+    a:123,
+    b:125
+};
+const s2 = {
+    a:135,
+    c:345
+};
+const target = {
+    d:222,
+    c:325
+};
+Object.assign(target,s1,s2);
+console.log(target); // { d: 222, c: 345, a: 135, b: 125 }
+
+// 该方法常用于复制对象
+function Block(opts){
+    // 使用this接收
+    Object.assign(this,opts);
+}
+options = {
+    width: 20,
+    height:15
+}
+const blo1 = new Block(options);
+console.log(blo1); // Block { width: 20, height: 15 }
+```
+##### is()
+
+Object.is() 改进了===的判断，以下两个例子与在===中的结果相反
+
+```js{cmd=node}
+console.log(Object.is(NaN,NaN)); // true
+console.log(Object.is(+0,-0)); // false
+```
+
+#### class类
+更加整洁且容易理解
+```js{cmd=node}
+class Block{
+    constructor(name,age) {
+        this.name = name;
+        this.age = age;
+    }
+    sayHi() {
+        console.log(`Hi,My name is ${this.name},I'm ${this.age} years old`);
+    }
+}
+const b1 = new Block('Tom',18);
+b1.sayHi();
+```
+
+#### 静态成员
+##### 创建静态方法
+
+```js{cmd=node}
+class Block{
+    constructor(name,age) {
+        this.name = name;
+        this.age = age;
+    }
+    sayHi() {
+        console.log(`Hi,My name is ${this.name},I'm ${this.age} years old`);
+    }
+    // 新增一个创建实例对象的方法
+    static create(name,age) {
+        // this指向的是类型Block
+        console.log(this);
+        return new Block(name,age);
+    }
+}
+const b1 = new Block('Tom',18);
+b1.sayHi();
+const b2 = Block.create('Bob',20);
+console.log(b2);
+```
+
+##### 类的继承
+使用extends关键字
+```js{cmd=node}
+class Block{
+    constructor(name,age) {
+        this.name = name;
+        this.age = age;
+    }
+    sayHi() {
+        console.log(`Hi,My name is ${this.name},I'm ${this.age} years old`);
+    }
+}
+class Student extends Block{
+    constructor(name,age,num) {
+        // 表示从父类里继承这些属性的设置
+        super(name,age);
+        this.num = num;
+    }
+    hello (){
+        // 从父类中继承一个方法，使用super调用
+        super.sayHi();
+        console.log(`我的学号是${this.num}`);
+    }
+}
+const s1 = new Student('Mary',18,1001);
+console.log(s1);
+s1.hello();
+```
+####set数据结构(集合)
+内部数据不允许重复
+遍历方式：for。。。each  for。。。of
+size属性：类似数组中的length
+add():向集合中添加数据
+has():判断集合中是否包含某个值
+delete() 删除某项，并返回一个布尔值表示是否删除成功
+clear() 清除当前集合中的全部内容
+应用：数组去重
+```js{cmd=node}
+const s = new Set();
+s.add(1).add(2).add(3).add(4).add(3);
+console.log(s); // {1,2,3,4} 重复项被删除
+console.log(s.has(5)); // false
+console.log(s.delete(100)); // false
+console.log(s.delete(4)); // true
+// 应用：数组去重
+const arr = [1,3,2,3,4,2];
+// 法1 创建集合，将有重复数据的数组传入集合中，集合会去重，但此时生成的是一个集合，使用Array.from()再将其转为数组
+const s2 = Array.from(new Set(arr));
+// 法2
+const s3 = [...new Set(arr)];
+console.log(s3); // [1,3,2,4]
+```
+####Map数据结构
+在对象中，键都是字符串类型的(即使设置的是数字或布尔值)。
+使用Obj.keys()查看键
+map.set(键,值)
+map.get(键)
+map.has()
+map.delete()
+map.clear()
+在map中即使键是任意类型，不会转为字符串
+```js{cmd=node}
+const map = new Map();
+const m = {a:1};
+map.set(m,10);
+console.log(map); //Map { { a: 1 } => 10 }
+console.log(map.get(m)); // 10 
+// 遍历
+map.forEach((value,key) => { console.log(key,value)});
+// { a: 1 } 10
+```
+####symbol
+表示一个独一无二的值
+用途：为对象添加独一无二的属性标识符
+
+
+symbol.for("foo");
+
+for()维护的是字符串和symbol之间的对应关系。
+
+```js{cmd=node}
+const s1 = {
+    [Symbol()]: "symbol value",
+    name: 'Tom'
+}
+// 通过这个方法可以获取到symbol类型的属性
+console.log(Object.getOwnPropertySymbols(s1));
+// 通过这个方法可以获取普通属性名的属性
+console.log(Object.keys(s1));
+```
+for...of循环
+
+![](G:\front\notes\Part 2\Module4 JavaScript高级特性及ES6\es2015其他内容.png)
+
+## ES2016
+
+###### Array.includes()
+
+可以检测NaN，弥补了indexOf()的不足
+
+作用：元素查找
+
+###### 指数运算符
+
+以前：Math.pow(2,3)
+
+现在 **  如： 2的10次方： console.log(2 ** 10);
+
