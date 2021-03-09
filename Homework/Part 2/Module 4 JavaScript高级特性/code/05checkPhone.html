@@ -14,9 +14,9 @@
         // var reg = /^\d{3,4}-{1}\d{7,8}$/;
         //    console.log(reg.test(010-12345678));
         var a = prompt("");
-        var reg = /^\d{3,5}-{1}\d{8}$/;
-        var reg1 = new RegExp("^\d{3,5}-{1}\d{8}$", "g");
-        if (reg1.test(a) == true) {
+        // var reg = /^\d{3,5}-{1}\d{8}$/;
+        const reg = /^\d{3,5}\-\d{8}$/;
+        if (reg.test(a) == true) {
             alert("true");
         } else {
             alert("false");
