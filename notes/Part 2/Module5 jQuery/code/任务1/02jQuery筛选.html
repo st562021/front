@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <p>段落1</p>
+        <p>段落2</p>
+        <p>段落3</p>
+        <p>段落4</p>
+        <p>段落5</p>
+        <p>段落6</p>
+        <p>段落7</p>
+        <p>段落8</p>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $("p:first").css("background-color","pink");
+        $("p:last").css("background-color","pink");
+        // 选中下标为x的项
+        $("p:eq(5)").css("background-color","pink");
+        // 选中大于5的项
+        $("p:gt(5)").css("background-color","pink");
+        // 选中小于5的项
+        $("p:lt(5)").css("background-color","pink");
+        // 选中奇数项
+        $("p:odd").css("background-color", "pink");
+        // 选中偶数项
+        $("p:even").css("background-color", "pink");
+        // 取出所有与给定选择器匹配的元素
+        $("p:not(:even)").css("background-color", "pink");
+    </script>
+</body>
+
+</html>

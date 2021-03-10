@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <script src="../../js/jquery.min.js"></script>
+    <div class="box">
+        <div id="big"><img src="img/b1.jpg" alt=""></div>
+        <ul>
+            <li class="active"><img src="img/s1.jpg" msrc="m1.jpg" bsrc="b1.jpg" alt="手机缩略图"></li>
+            <li><img src="img/s2.jpg" msrc="m2.jpg" bsrc="b2.jpg" alt="手机缩略图"></li>
+            <li><img src="img/s3.jpg" msrc="m3.jpg" bsrc="b3.jpg" alt="手机缩略图"></li>
+        </ul>
+        <div class="middle"><img src="img/m1.jpg" alt=""></div>
+    </div>
+    <script>
+        var $imgs = $(".box ul li img");
+        var $big = $("#big img");
+        var $middle = $(".middle img");
+        $imgs.mouseenter(function () {
+            $(this).parent().addClass("active").siblings().removeClass("active");
+            var path = "img/";
+            var bimg = path + $(this).attr("bsrc");
+            var mimg = path + $(this).attr("msrc");
+            $big.attr("src",bimg);
+            $middle.attr("src",mimg);
+        })
+    </script>
+</body>
+
+</html>

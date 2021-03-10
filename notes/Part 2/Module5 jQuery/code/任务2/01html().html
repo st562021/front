@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <p>这是原始内容</p>
+        <p>这是原始内容</p>
+        <p>这是原始内容</p>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        var $p = $("p");
+        // html() 用来获取内容
+        // 此时只能获取类数组中的第一个元素的内容
+        console.log($p.html());
+        // 可以传一个参数，表示将获取到的对象的内部内容都修改为参数内容
+        console.log($p.html("abc"));
+        // 如果内部包含了标签的语法的字符，会按照标签正常进行加载
+        $p.html("标签内容被修改<p>这是新的p标签</p>")
+    </script>
+</body>
+</html>

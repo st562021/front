@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 需求：
+    使用递归实现(15行代码，10分钟) 
+    a.创建一个长度为5的空数组arr
+    b.生成一个2-32之间的随机整数rand
+    c.把rand插入到数组arr中，如果arr内已存在与rand相同的数字，则重新生成随机数rand并插入到arr中(使用递归)
+    d.最终输出一个长度为5且内容不重复的数组arr-->
+    <!-- 关键点：Array的includes() -->
+    <script>
+        let arr = [];
+        // check(arr);
+        // function check(arr) {
+        //     if (arr.length >= 5) {
+        //         return console.log(arr);
+        //     } else {
+        //         let rand = Math.floor(Math.random() * (32 - 2) + 2);
+        //         if (arr.indexOf(rand) > 0) {
+        //             // 调用生成随机数方法
+        //             check(arr);
+        //         } else {
+        //             arr.push(rand);
+        //             check(arr);
+        //         }
+        //     }
+        // };
+        // 法2：
+        check(arr,5);
+        function check(arr,length){
+            if(arr.length < length) {
+                let rand = Math.floor(Math.random() * (32 - 2 +1) + 2);
+                if(! arr.includes(rand)) {
+                    arr.push(rand);
+                }
+                check(arr,length);
+            }
+        }
+        console.log(arr);
+
+    </script>
+</body>
+
+</html>

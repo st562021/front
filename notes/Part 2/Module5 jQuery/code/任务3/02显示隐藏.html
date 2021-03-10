@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="button" id="btn1" value="显示">
+        <input type="button" id="btn2" value="隐藏">
+        <input type="button" id="btn3" value="切换">
+        <img src="images/0.jpg" alt="" id="img1">
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $btn1 = $("#btn1");
+        $btn2 = $("#btn2");
+        $btn3= $("#btn3");
+        $img1= $("#img1");
+        $btn1.click(function(){
+            $img1.show("slow");
+        });
+        $btn2.click(function(){
+            $img1.hide("fast");
+        });
+        $btn3.click(function(){
+            $img1.toggle("normal");
+        });
+    </script>
+</body>
+</html>
