@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            position: relative;
+            height: 3000px;
+        }
+        .box {
+            position: absolute;
+            top: 50px;
+            left: 200px;
+            margin: 100px auto;
+            width: 100px;
+            height: 300px;
+            overflow: auto;
+        }
+
+        .box p {
+            height: 50px;
+        }
+        .backTop{
+            position: fixed;
+            right:100px;
+            bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box">
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+        </div>
+        <div class="backTop">返回顶部</div>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        // 获取距离文档的位置
+        console.log($(".box").offset().top);
+        console.log($(".box").offset().left);
+
+        // 获取距离上级定位元素的位置
+        console.log($(".box").position().top);
+        console.log($(".box").position().left);
+
+        // 获取卷动后的页面间距
+        // 添加滚动事件
+        $(".box").scroll(function(){
+            console.log($(this).scrollTop());
+
+        });
+
+        // 返回顶部：
+        $(".backTop").click(function(){
+            $(document).scrollTop(0);
+        });
+    </script>
+</body>
+
+</html>

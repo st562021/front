@@ -405,3 +405,158 @@ $(document).ready(function(){}) ==>简写   ${function(){}}
 法2：函数节流，如果元素在运动，直接return，不要执行后面的运动代码
 
 * 每个jQuery对象都有一个is("**:animated**")，返回布尔值，true为正在运动
+
+#### jQuery节点操作
+
+##### 创建并添加元素
+
+语法： $("<li></li>")
+
+```html
+<body>
+    <ul class="uli">
+        <li>
+            旧li
+        </li>
+    </ul>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        var $uli = $(".uli");
+        var $newLi = $("<li>这是一个newLi</li>");
+        var $li = $(".uli li");
+        // 向父元素的最后添加
+        // $uli.append($newLi);
+        // $newLi.appendTo($uli);
+
+
+        // 向父元素的最前面添加
+        // $uli.prepend($newLi);
+        // $newLi.prependTo($uli);
+
+
+        // 向元素后面追加新兄弟
+        // $li.after($newLi);
+        // $newLi.insertAfter($li);
+
+
+        // 向元素前面追加新兄弟
+        // $li.before($newLi);
+        // $newLi.insertBefore($li);
+    </script>
+</body>
+```
+
+##### 删除元素
+
+jQuery对象.remove()
+
+##### 清空元素
+
+jQuery对象.empty()  
+
+* 推荐使用，清空内部的所有元素及元素相关的事件
+
+jQuery对象.html("")
+
+* 仅仅清空内部的元素，不清理内存中的元素的事件
+
+##### 克隆
+
+语法：对象.clone(boolean),返回克隆好的元素
+
+参数：默认是false，表示仅仅克隆内容。true，克隆内容和事件
+
+##### 操作元素尺寸
+
+直接得到数字类型，不需要转化
+
+width()  height()     操作**内容**部分
+
+innerWidth()  innerHeight()  
+
+* 操作**内容+padding**区域
+* 将增加的部分加到了width()上
+
+outerWidth()  outerHeight()
+
+* 操作**border及以内区域**的大小
+
+##### 操作元素位置
+
+###### 获取元素距离文档的位置
+
+* 对象.offset()
+* 返回一个对象，对象中包含了元素的位置
+* offset()方法获取的元素的位置，永远参照文档，和定位没有关系
+
+###### 获取元素距离上级定位元素的位置
+
+* position()
+* 返回一个对象，对象中包含了元素的位置
+* position()方法获取的元素的位置，参照最近的定位元素(和定位有关)
+
+###### 获取或设置卷去的页面间距
+
+* 对象.scrollTop()
+
+#### jquery事件操作
+
+##### on方法事件注册
+
+* 底层：addEventListener()
+
+对象.on(事件名，事件程序)；
+
+##### on方法事件委托
+
+jQuery对象.on(事件名，选择器，事件处理程序)；
+
+* 选择器：子孙函数
+* 在事件处理程序中，this指向子孙元素(点击最先触发的)
+
+##### off解除事件绑定
+
+对象.off(事件类型，事件处理程序名称)；
+
+##### trigger触发事件
+
+对象.trigger(事件名)
+
+如：自动轮播图
+
+##### 事件对象e
+
+已封装，不存在兼容问题
+
+e.keyCode  返回键码数字
+
+e.altKey/shiftKey/ctrlKey  返回布尔值，检测是否按下
+
+* 属性
+
+  e.target  最初触发事件的DOM
+
+  e.currentTarget  在事件冒泡阶段中的当前DOM元素
+
+* 方法
+
+  e.preventDefault();阻止默认行为。如：a标签的自动跳转
+
+  e.stopPropagation();阻止事件冒泡
+
+##### 多库共存
+
+多个库中定义了名字相同的全局变量，后引入的会覆盖前面引入的
+
+###### 解决
+
+* 使用jQuery代替$进行调用
+
+* jQuery库释放$符号的使用权，用其他简单的符号代替
+
+  jQuery.noConflict() 释放$,把$代表的函数返回给用户，用户可以使用其他变量接收。
+
+  var $1 = jQuery.noConflict();
+
+#### 插件
+

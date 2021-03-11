@@ -65,23 +65,26 @@
     .arrow-right {
       right: 0;
     }
-    .slider ol{
+
+    .slider ol {
       position: absolute;
-      left:100px;
+      left: 100px;
       bottom: 30px;
       width: 240px;
       height: 20px;
     }
-    .slider ol li{
+
+    .slider ol li {
       float: left;
       width: 20px;
       height: 20px;
       margin-right: 10px;
       border-radius: 50%;
-      background:rgba(255, 255, 255, .5);
-      cursor:pointer;
+      background: rgba(255, 255, 255, .5);
+      cursor: pointer;
     }
-    .slider ol li.cur{
+
+    .slider ol li.cur {
       background-color: #fff;
     }
   </style>
@@ -126,40 +129,50 @@
     var $right = $(".arrow-right");
     var idx = 0;
     // 右键切换效果
-    $right.click(function(){
+    $right.click(function () {
       // 函数节流
-      if($ulLis.eq(idx).is(":animated")) return;
+      if ($ulLis.eq(idx).is(":animated")) return;
       $ulLis.eq(idx).fadeOut();
       idx++;
-      if(idx > $ulLis.length - 1) {
+      if (idx > $ulLis.length - 1) {
         idx = 0;
       }
       move();
     });
     // 左键切换效果
-    $left.click(function(){
+    $left.click(function () {
       // console.log('jinru ');
-      if($ulLis.eq(idx).is(":animated")) return;
+      if ($ulLis.eq(idx).is(":animated")) return;
       $ulLis.eq(idx).fadeOut();
       idx--;
-      if(idx < 0) {
+      if (idx < 0) {
         idx = $ulLis.length - 1;
       }
       move();
     });
     // 小圆点
-    $olLis.click(function(){
-      if($ulLis.eq(idx).is(":animated")) return;
+    $olLis.click(function () {
+      if ($ulLis.eq(idx).is(":animated")) return;
       $ulLis.eq(idx).fadeOut();
       idx = $(this).index();
       move();
 
     })
-    function move(){
+    function move() {
       $ulLis.eq(idx).fadeIn();
       $olLis.eq(idx).addClass("cur").siblings().removeClass("cur");
     }
-
+    // 添加自动轮播
+    var timer = setInterval(autoPlay, 1000);
+    function autoPlay() {
+      $right.trigger("click");
+    }
+    $slider.on("mouseenter",function(){
+      clearInterval(timer);
+    });
+    $slider.on("mouseleave",function(){
+      timer = setInterval(autoPlay, 1000);
+    })
   </script>
 
 

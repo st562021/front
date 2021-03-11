@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="uli">
+        <li>
+            旧li
+        </li>
+    </ul>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        var $uli = $(".uli");
+        var $newLi = $("<li>这是一个newLi</li>");
+        var $li = $(".uli li");
+        // 向父元素的最后添加
+        // $uli.append($newLi);
+        // $newLi.appendTo($uli);
+
+
+        // 向父元素的最前面添加
+        // $uli.prepend($newLi);
+        // $newLi.prependTo($uli);
+
+
+        // 向元素后面追加新兄弟
+        // $li.after($newLi);
+        // $newLi.insertAfter($li);
+
+
+        // 向元素前面追加新兄弟
+        // $li.before($newLi);
+        // $newLi.insertBefore($li);
+    </script>
+</body>
+
+</html>

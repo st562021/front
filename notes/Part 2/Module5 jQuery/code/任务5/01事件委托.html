@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li>l</li>
+        <li>n</li>
+        <li>s</li>
+        <li>d</li>
+        <li>a</li>
+        <li>c</li>
+    </ul>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        var $ul = $("ul");
+        $ul.on("click","li",function(){
+            console.log($(this).text());
+        })
+        $ul.on("click","li",m2);
+        // 解绑
+        $ul.off("click","li",m2);
+        function m2(){
+            console.log(3);
+        }
+    </script>
+</body>
+</html>
