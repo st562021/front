@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <input type="text" id="a">
     <select name="symbol" id="symbol">
@@ -15,30 +17,57 @@
         <option value="/">/</option>
     </select>
     <input type="text" id="b">
-    <input type="text" disabled="disabled" value="=">
-    <input type="text" disabled="disabled" value="">
+    <input type="button" value="=" id="res">
+    <input type="text" disabled="disabled" value="" id="result">
     <script src="js/jquery.min.js"></script>
     <script>
-        $a = $("#a");
-        arr = [];
-        $symbol = $("#symbol");
-        $symbol.children().each(function(i){
-            arr[i] = $(this).val();
-        });
 
-        function add(a,b){
-            return a + b;
+        $symbol = $("#symbol");
+        var $res = $("#res");
+        // $symbol.children().each(function (i) {
+        //     arr[i] = $(this).val();
+        // });
+        $res.on("click", function () {
+            var sy = $symbol.val();
+            var $a = Number($("#a").val());
+            var $b = Number($("#b").val());
+            switch (sy) {
+                case "+":
+                    add($a, $b);
+                    break;
+                case "-":
+                    sub($a, $b);
+                    break;
+                case "*":
+                    mul($a, $b);
+                    break;
+                case "/":
+                    div($a, $b);
+                    break;
+            }
+        })
+        function add(a, b) {
+            console.log(a,b);
+            res = a + b;
+            sent(res);
         }
-        function sub(a,b) {
-            return a - b;
+        function sub(a, b) {
+            res =  a - b;
+            sent(res);
         }
-        function mul(a,b) {
-            return a * b;
+        function mul(a, b) {
+            res =  a * b;
+            sent(res);
         }
-        function div(a,b) {
-            return parseFloat(a / b);
+        function div(a, b) {
+            res =  parseFloat(a / b);
+            sent(res);
         }
-        
+        function sent(res){
+            $("#result").val(res);
+        }
+
     </script>
 </body>
+
 </html>

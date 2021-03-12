@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+        昵称：<input type="text" id="name" required><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <textarea name="text" id="text" cols="30" rows="10" required></textarea><br>
+        <input type="checkbox" id="cbox">匿名<br>
+        <button id="btn">提交</button>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var $name = $("#name");
+        var $text = $("#text");
+        var $cbox = $("#cbox");
+        var $btn = $("#btn");
+        var name1, mess;
+        $btn.click(function () {
+            if ($text.val() == "" || $name.val() == "") {
+                alert("昵称和内容不能为空！");
+            } else {
+                if ($cbox.prop("checked")) {
+                    name1 = "路人甲";
+                    mess = $text.val();
+                } else {
+                    name1 = $name.val();
+                    mess = $text.val();
+                }
+                logmessage(name1, mess);
+            }
+
+        });
+        function logmessage(name, text) {
+            console.log(name + "   " + now() + "\n" + text);
+        }
+        // 获取当前时间
+        function now(){
+            var nowDate = new Date();
+            var year = nowDate.getFullYear();
+            var month = nowDate.getMonth() + 1 < 10 ? "0" +(nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+            var day = nowDate.getDate();
+            var hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+            var minute = nowDate.getMinutes() <10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+            var second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+            return year + "." + month + "." + day + "  " + hour + ":" + minute + ":" + second;
+        }
+    </script>
+</body>
+
+</html>

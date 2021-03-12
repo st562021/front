@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            width: 61px;
+            height: 58px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="change">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var $ul = $(".change");
+        var $ulLis = $(".change li");
+        var path = "images/";
+        var em = "empty.jpeg";
+        var fu = "full.jpeg";
+        var url = "url(" + path + em + ")";
+        var urlC = "url(" + path + fu + ")";
+
+        console.log(url);
+        $ulLis.each(function () {
+            $(this).css({"background-image": url,"background-size":61});
+        });
+        // console.log($ulLis);
+        $ulLis.mouseenter(function () {
+            // console.log(111);
+            $(this).css("background-image",urlC).prevAll().css("background-image",urlC);
+        })
+        $ul.mouseleave(function(){
+            $(this).children().css({"background-image": url,"background-size":61});
+        });
+    </script>
+</body>
+
+</html>

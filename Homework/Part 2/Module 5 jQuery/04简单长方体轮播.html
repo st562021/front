@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            margin: 15px auto;
+            width: 820px;
+        }
+        #imgShow {
+            list-style: none;
+            position: relative;
+            width: 810px;
+            height: 600px;
+            transition: all 2s ease;
+            /* 保留3D空间 */
+            transform-style: preserve-3d;
+            perspective: 1000;
+        }
+        #imgShow li {
+            position:absolute;
+            top: 0;
+            left:0;
+            width: 800px;
+            height: 600px;
+        }
+        li:nth-child(1) {
+            transform: translateZ(300px);
+        }
+        li:nth-child(2) {
+            transform: rotateX(90deg) translateZ(300px);
+        }
+        li:nth-child(3) {
+            transform: rotateX(180deg) translateZ(300px);
+        }
+        li:nth-child(4) {
+            transform: rotateX(270deg) translateZ(300px);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="imgShow">
+            <li id="img1"></li>
+            <li id="img2"></li>
+            <li id="img3"></li>
+            <li id="img4"></li>
+        </ul>
+    </div>
+    <button id="btn">下一张</button>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var $imgShow = $("#imgShow");
+        var $btn = $("#btn");
+        var $lis = $("#imgShow li");
+        var arr = ["01.JPG","02.JPG","03.JPG","04.JPG"];
+        var path = "images/";
+        var deg = 0;
+        var count = 0;
+        $lis.each(function(i){
+            var url = "url(" + path + arr[i] + ")";
+            $(this).css({"background-image": url,"background-size":800});
+        });
+        $btn.on("click",function(){
+            count++;
+            deg = 90 * count;
+            $imgShow.css("transform",`rotateX(-${deg}deg)`);
+            // console.log('旋转成功');
+        });
+    </script>
+</body>
+</html>
