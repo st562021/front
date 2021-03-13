@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border=1 cellspacing="0" collapse="collapse" id="tb">
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>班级</th>
+        </tr>
+    </table>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        var box = document.getElementById("tb");
+        var str = "";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/students");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                var d = this.responseText;
+                var data = JSON.parse(d);
+                for (var i = 0; i < data.length; i++) {
+                    str += `<tr>
+            <td>${data[i].id}</td>
+            <td>${data[i].name}</td>
+            <td>${data[i].class}</td>
+        </tr>`
+                }
+                box.innerHTML += str;
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+
+</html>

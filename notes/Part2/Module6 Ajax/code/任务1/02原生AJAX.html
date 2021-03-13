@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        // 1.创建对象，相当于打开一个浏览器窗口
+        var xhr = new XMLHttpRequest();
+        // 2.准备发送，相当于输入网址
+        xhr.open("GET","https://jsonplaceholder.typicode.com/users")
+        // 3.执行发送，相当于敲回车键
+        xhr.send(null);
+        // 4.指定xhr状态变化事件处理函数
+        xhr.onreadystatechange = function () {
+            // 通过判断xhr的readystate的值，为4时，请求完成
+            if(this.readyState === 4) {
+                // 得到响应体
+                console.log(this.responseText);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{
+  "students": [
+    {
+      "id": "002",
+      "name": "Jack",
+      "class": 2104
+    },
+    {
+      "id": "003",
+      "name": "Lucy",
+      "class": 2102
+    },
+    {
+      "id": "004",
+      "name": "Mary",
+      "class": 2103
+    },
+    {
+      "name": "'Lily'",
+      "class": "2103",
+      "id": "005"
+    },
+    {
+      "name": "Lily",
+      "class": "2103",
+      "id": "WpheIoZ"
+    },
+    {
+      "name": "Sybol",
+      "class": "2103",
+      "id": "58PSylM"
+    },
+    {
+      "name": "John",
+      "id": "skcKESa"
+    },
+    {
+      "name": "Cora",
+      "id": "IV31ZNr"
+    }
+  ],
+  "classes": [
+    {
+      "id": "2101",
+      "leader": "Mr Li"
+    },
+    {
+      "id": "2102",
+      "leader": "Mr Zhang"
+    },
+    {
+      "id": "2103",
+      "leader": "Mr Wang"
+    },
+    {
+      "id": "2104",
+      "leader": "Mr Huo"
+    }
+  ],
+  "colleges": [
+    {
+      "id": "14001",
+      "name": "NYU"
+    },
+    {
+      "id": "14002",
+      "name": "CUSX"
+    },
+    {
+      "id": "14003",
+      "name": "TYUT"
+    },
+    {
+      "id": "14004",
+      "name": "PYNU"
+    }
+  ]
+}

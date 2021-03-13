@@ -428,12 +428,14 @@ person2.sayHi(); // Hi,My name is Tom
 1.用变量定义一个值，对象的属性名和要传进来的变量名相同时，变量名可以省略不写。
 2.对象中的函数可省略 : function不写
 3.对象中允许有动态添加属性名的方式
+
 ```js{cmd=node}
 const bar = 'bar';
 const age = "sex";
 const person = {
     name: 'John',
     bar,
+    // sex属性就是动态添加进去的。
     [age]: '男',
     sayHi () {
         console.log("Hi");

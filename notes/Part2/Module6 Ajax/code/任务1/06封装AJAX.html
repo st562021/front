@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        // 参数1. 请求方式
+        // 参数2. url 
+        // 参数3. 请求参数 body
+        // 参数4.获取到后要执行的操作  回调函数
+        function ajax(method, url, params, done) {
+            // 兼容写法
+            var xhr = new XMLHttpRequest() ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+            method = method.toUpperCase();
+            var str = "";
+            var arr = [];
+            for (let key in params) {
+                str = key + "=" + params[key];
+                arr.push(str);
+            }
+            str = arr.join("&");
+            if (method === "GET") {
+                url += "?" + str;
+            }
+            xhr.open(method, url);
+            // 如果是post 要设置请求头
+            if (method === "POST") {
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            }
+            xhr.send(str);
+            xhr.onreadystatechange = function () {
+                if (this.readyState !== 4) return;
+                done(JSON.parse(this.responseText));
+            }
+        }
+        ajax("GET", "http://localhost:3000/students", { "id": "001" }, function (data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

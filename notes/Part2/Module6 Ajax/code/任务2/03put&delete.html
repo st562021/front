@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        // put请求，没有特殊的方法，只能使用$.ajax().
+        // 在修改时，务必在data中写全当前操作的这组数据，否则会出现属性丢失。
+        $.ajax({
+            url: "http://localhost:3000/students/001"
+            ,dataType: "json"
+            ,type: "put"
+            ,data: {name:"Fetty",class:"2102"}
+            ,success: function(data){
+                console.log(data);
+            }
+        });
+        $.ajax({
+            url: "http://localhost:3000/students/001"
+            ,type: "delete"
+            ,success: function(){
+                console.log('删除成功');
+            }
+        })
+    </script>
+</body>
+</html>
