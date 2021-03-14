@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        input {
+            border: none;
+            /* 点击时高亮显示 */
+            outline: none;
+        }
+        #box {
+            width: 500px;
+            height: 50px;
+            margin: 20px auto;
+        }
+        #search-box {
+            float: left;
+            width: 400px;
+            box-sizing: border-box;
+            border: 2px solid #09f;
+        }
+        #search-btn {
+            width: 100px;
+            height: 50px;
+            font-size:20px;
+            font-weight: 700;
+            background-color: #09f;
+            color: #fff;
+        }
+        #inputs {
+            margin-left: 10px;
+            width: 300px;
+            height: 46px;
+            font-size: 18px;
+        }
+        #res li {
+            line-height: 36px;
+            padding-left: 18px;
+        }
+    </style>
+</head>
+<body>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/template-web.js"></script>
+    <div id="box">
+        <div id="search-box">
+            <input type="text" id="inputs">
+            <ul id="res">
+            </ul>
+        </div>
+        <input type="button" value="搜索" id="search-btn">
+    </div>
+    <script id="temp" type="text/html">
+        <% for(var i=0;i < g.length;i++) { %>
+            <li><%= g[i].q %></li>
+        <% } %>
+    </script>
+    <script>
+        var $search_btn = $("#search-btn");
+        var $res = $("#res");
+        var $inputs = $("#inputs");
+        // $inputs.key
+        $inputs.on("keyup",function(){
+            var val = $(this).val();
+            $.ajax({
+                url:"https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web"
+                ,dataType: "jsonp"
+                ,data:{wd:val}
+                ,jsonp:"cb"
+                ,success: function(data){
+                    // 传一个对象，对象中的属性可以直接调用
+                    $res.html(template("temp",data));
+                }
+            })
+        });
+    </script>
+</body>
+</html>

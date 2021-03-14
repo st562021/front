@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="请求" id="btn">
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        var $btn = $("#btn");
+        $btn.on("click", function () {
+            $.ajax({
+                url: "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web",
+                type: "GET",
+                // jQuery封装的采用jsonp的方式获取，并没有用到ajax，只是使用dataType进行判断，如果是jsonp,则走jsonp方式。
+                dataType:"jsonp",
+                // jsonp 可以设置回调函数的参数名称(必须与后台接口的回调函数参数名保持一致)
+                jsonp:"cb",
+                // jQ自动分配的回调函数的名称进行重命名
+                jsonpCallback:"abc",
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../js/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        // 请求拦截器
+        // 两个参数，第一个为发送请求之前要做的，第二个为对请求错误做些什么
+        axios.interceptors.request.use(function(config) {
+            config.data = {id:"002"};
+            config.method = "get";
+            return config;
+        },function(err){
+            return Promise.reject(err);
+        })
+        // 响应拦截器
+        // 两个参数，第一个参数为对响应数据的操作，第二个参数为对响应错误的操作
+        axios.interceptors.response.use(function(response) {
+            return response.data;
+        },function(err){
+            return Promise.reject(err);
+        })
+        axios({
+            url:"http://localhost:3000/students",
+            method:"POST",
+            data:{
+                name:"Lucifer",
+                class:"2101"
+            }
+        }).then(function(res){
+            console.log(res)
+        }).catch(function(error){
+            console.log(error);
+        })
+    </script>
+</body>
+</html>

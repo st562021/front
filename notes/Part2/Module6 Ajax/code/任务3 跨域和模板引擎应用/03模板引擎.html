@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/template-web.js"></script>
+    <!-- 创建模板 -->
+    <!-- 模板中只能写模板的内容，其他js代码要写在另一个script标签中 -->
+    <script id="tem" type="text/html">
+     <!-- 循环生成一段html -->
+        <% for(var i = 0;i < 5;i++) { %>
+            <div><%= i %></div>
+            <div><%= name %></div>
+        <% } %>
+    </script>
+    <script>
+        // 将模板内容添加到box中
+        // 使用template()方法。
+        // 有两个参数
+        // 第一个是模板，第二个是一个对象型的数据，数据会传给模板，对象内的属性的属性名可以在模板中直接当变量名使用·    
+        var $box = $("#box");
+        $box.html(template("tem",{name:"tom"}))
+    </script>
+</body>
+</html>
