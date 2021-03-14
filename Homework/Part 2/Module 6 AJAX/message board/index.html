@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-web.js"></script>
+</head>
+<body>
+    <div id="stage">
+        <!-- 楼层主题 -->
+        <head>
+            <h2>新年快乐</h2>
+            <p>楼主：星驰</p>
+            <p class="content">新的一年，祝大家身体健康，万事如意</p>
+        </head>
+        <!-- 发表回复 -->
+        <div id="text">
+            <h6>发表回复</h6>
+            用户名：<input type="text" id="username">
+            <textarea name="text" id="newContent" cols="30" rows="10"></textarea>
+            <input type="button" value="发表" class="submit">
+        </div>
+        <!-- 回复列表 -->
+        <ul id="reply">
+            <li>
+                <p class="floor"><span>1楼</span><a href="#" id="delete">删除</a></p>
+                <p class="author">层主：小王</p>
+                <p class="content">同意楼主</p>
+            </li>
+        </ul>
+    </div>
+
+    <script></script>
+</body>
+</html>
