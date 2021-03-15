@@ -5,12 +5,74 @@ textarea, p {
     margin: 0;
     padding: 0;
 }
-
-
-
 ul {
     list-style: none;
 }
 input{
     outline: none;
+}
+#stage {
+    margin: 20px auto;
+    padding: 5px;
+    width: 800px;
+    background-color: rgb(241, 241, 241);
+}
+#head {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    padding: 10px 0;
+}
+h3 {
+    line-height: 32px;
+}
+.author {
+    line-height: 25px;
+    font-size: 14px;
+    color:gray;
+}
+.content {
+    margin-bottom: 5px;
+    line-height: 22px;
+    font-size: 14px;
+}
+#text {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 5px;
+    border-bottom: 1px solid lightgray;
+}
+#text input{
+    margin: 7px 0;
+    border:0;
+    line-height: 18px;;
+}
+#text textarea {
+    border: 1px solid lightgray;
+}
+.submit {
+    display: block;
+    width: 35px;
+    height: 25px;
+    border-radius: 3px;
+    background-color:rgb(57, 153, 243);
+    color: #fff;
+}
+.reply {
+    width: 100%;
+}
+.reply li {
+    width: 98%;
+    border-bottom: 1px solid lightgray;
+    margin: 0 3px 5px;
+}
+.floor{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+.floor span {
+
+}
+.floor a {
+    float: right;
 }

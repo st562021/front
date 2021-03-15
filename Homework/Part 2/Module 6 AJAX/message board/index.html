@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,31 +10,37 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/template-web.js"></script>
 </head>
+
 <body>
     <div id="stage">
         <!-- 楼层主题 -->
-        <head>
-            <h2>新年快乐</h2>
-            <p>楼主：星驰</p>
+        <div id="head">
+            <h3>新年快乐</h3>
+            <p class="author">楼主：星驰</p>
             <p class="content">新的一年，祝大家身体健康，万事如意</p>
-        </head>
+        </div>
         <!-- 发表回复 -->
         <div id="text">
-            <h6>发表回复</h6>
-            用户名：<input type="text" id="username">
-            <textarea name="text" id="newContent" cols="30" rows="10"></textarea>
+            <h4>发表回复</h4>
+            用户名：<input type="text" id="username"><br>
+            <textarea name="text" id="newContent" cols="50" rows=3></textarea><br>
             <input type="button" value="发表" class="submit">
         </div>
         <!-- 回复列表 -->
-        <ul id="reply">
-            <li>
-                <p class="floor"><span>1楼</span><a href="#" id="delete">删除</a></p>
-                <p class="author">层主：小王</p>
-                <p class="content">同意楼主</p>
-            </li>
+        <ul class="reply">
         </ul>
     </div>
-
-    <script></script>
+    <!-- 创建模板，完成刷新数据功能 -->
+    <script id="temp" type="text/html">
+        <% for(var i = 0; i < data.length; i++) { %>
+            <li idx="<%= data[i].id %>">
+                <p class="floor"><span><%= data[i].id %>楼</span><a href="#" id="delete">删除</a></p>
+                <p class="author">层主：<%= data[i].author %></p>
+                <p class="content"><%= data[i].content %></p>
+            </li>
+        <% } %>
+    </script>
+    <script src="js/index.js"></script>
 </body>
+
 </html>
